@@ -31,13 +31,13 @@ class fastMRIEnviroment(object):
         return centre_fraction, acceleration
 
 
-    def step(self):
+    def step(self, action):
 
         # action is the selection acceleration factor
-        centre_fraction, acceleration=self.get_action()
+        #centre_fraction, acceleration=self.get_action()
 
 
-        action =(centre_fraction, acceleration)
+        centre_fraction, acceleration = action[0], action[1]
         training_images, training_labels =  get_training_pair_images_vae(self.filenames[self.counter], centre_fraction, acceleration)
 
         reward=self.get_reward(training_images[:,:,:,0], training_labels)
@@ -61,3 +61,12 @@ class fastMRIEnviroment(object):
         filenames=list(pathlib.Path(self.training_datadir).iterdir())
         np.random.shuffle(filenames)
         print("Number training data " + str(len(filenames)))
+
+
+    def reset(self):
+
+        self.done = True
+        self.counter = 1
+        random.shuffle(self.filenames)
+
+

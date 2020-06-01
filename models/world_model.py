@@ -6,11 +6,10 @@ import time
 import importlib
 import argparse
 
-import config
+#import config
 
-from gym.wrappers import Monitor
 
-from env import make_env
+from models.enviroment import fastMRIEnviroment
 from models.VAE import CVAE
 from models.MDNRNN import MDNRNN
 from models.controller import Controller
@@ -26,12 +25,12 @@ ADD_NOISE = False
 
 def make_model():
     vae =CVAE()
-    vae.load_model(vae.model_name)
+    #vae.load_model(vae.model_name)
     #vae.set_weights('./vae/weights.h5')
 
     rnn = MDNRNN()
     #rnn.set_weights('./rnn/weights.h5')
-    rnn.load_model(rnn.model_name)
+    #rnn.load_model(rnn.model_name)
 
     controller = Controller()
 
@@ -90,7 +89,7 @@ class Model:
     def make_env(self, env_name, seed=-1, render_mode=False, model=None):
         self.render_mode = render_mode
         self.env_name = env_name
-        self.env = make_env(env_name, seed=seed, render_mode=render_mode, model=model)
+        self.env = fastMRIEnviroment()
 
     def get_action(self, x, t=0, add_noise=False):
         # if add_noise = True, ignore sampling.
@@ -110,8 +109,8 @@ class Model:
                 h += output_noise
             h = self.activations(h)
 
-        if self.sample_output:
-            h = sample(h)
+        #if self.sample_output:
+            #h = sample(h)
 
         return h
 
@@ -151,7 +150,7 @@ class Model:
 
     def update(self, obs, t):
         if obs.shape == self.vae.input_dim:
-            return self.vae.encoder.predict(np.array([obs]))[0]
+            return self.vae.encoder(np.array([obs]))[0]
         else:
             return obs
 
@@ -220,7 +219,7 @@ def simulate(model, num_episode=5, seed=-1, max_len=-1, generate_data_mode=False
             input_to_rnn = [np.array([[np.concatenate([vae_encoded_obs, action, [reward]])]]), np.array([model.hidden]),
                             np.array([model.cell_values])]
 
-            out = model.rnn.forward.predict(input_to_rnn)
+            #TODO: change this out = model.rnn.forward.predict(input_to_rnn)
 
             y_pred = out[0][0][0]
             model.hidden = out[1][0]

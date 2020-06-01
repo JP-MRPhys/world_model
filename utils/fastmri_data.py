@@ -89,7 +89,9 @@ def get_training_pair_images_vae(file, centre_fraction, acceleration, image_size
 
     recon_image_abs, mean, std = T.normalize_instance(recon_image_abs)
 
-    return np.expand_dims(volume_image, 3), recon_image_abs.numpy()
+    recon_image_final=np.expand_dims(recon_image_abs.numpy(), 3)
+
+    return  recon_image_final, np.expand_dims(volume_image, 3)
 
 
 def get_random_accelerations(high):

@@ -33,7 +33,7 @@ class MDNRNN():
 
         self.rnn, self.mdn=self.build_models()
 
-        self.lstm_output, self.hidden_state= self.rnn(self.inputs)
+        self.lstm_output, self.hidden_state, self.cell_state= self.rnn(self.inputs)
         #self.lstm_output_reshape = tf.reshape(self.lstm_output, [-1, self.hidden_units])
         self.mdn_output=self.mdn(self.lstm_output)
         self.mdn_output_reshape = tf.reshape(self.mdn_output, [-1, self.gaussian_mixtures_number*3])
@@ -64,14 +64,14 @@ class MDNRNN():
 
 
 
-       lstm_input = tf.keras.layers.Input(shape=(None,self.Z_dim+self.action_dim))
+       lstm_input = tf.keras.layers.Input(shape=(None,self.Z_dim+self.action_dim+1))  #plus 1 is for reward
        lstm_ouput, final_hidden_state, final_carry_state =tf.keras.layers.LSTM(self.hidden_units, return_state=True)(lstm_input)
 
        mnd_input = tf.keras.layers.Input(shape=(None, self.hidden_units))
        mdn =tf.keras.layers.Dense(self.gaussian_mixtures_number*3*(self.Z_dim))(mnd_input)  #3*as MDN as three output parameter
 
 
-       lstm_model = tf.keras.Model([lstm_input], [lstm_ouput, final_hidden_state])
+       lstm_model = tf.keras.Model([lstm_input], [lstm_ouput, final_hidden_state, final_carry_state])
        mdn_model = tf.keras.Model( [mnd_input], [mdn])
 
        print(lstm_model.summary())
