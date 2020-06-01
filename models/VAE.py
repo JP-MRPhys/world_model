@@ -221,7 +221,7 @@ class CVAE(tf.keras.Model):
                     print("Number training data " + str(len(filenames)))
                     np.random.shuffle(filenames)
                     reward=0
-                    for file in filenames[0:3]:
+                    for file in filenames:
 
                         centre_fraction, acceleration = get_random_accelerations(high=10)
                         # training_images: fully sampled MRI images
