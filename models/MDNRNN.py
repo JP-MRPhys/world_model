@@ -11,6 +11,101 @@ RNN_HIDDEN_UNITS=256
 GMM_DIM=5
 logSqrtTwoPI = np.log(np.sqrt(2.0 * np.pi))
 
+Z_factor=1
+R_factor=1
+LEARNING_RATE=0.001
+CLIP_GRADIENT=1
+
+"""
+rnn output is only (batch, output_size=[z_dim+1 for reward_dim] and not [batch_size, time_size, output_size) need to check this at later pointer for other envs
+
+Not using teacher forcing to train as one time step is avaliable, so using the true z from fully sampled images or rewards
+
+		rnn_input = np.concatenate([z[:, :-1, :], action[:, :-1, :], rew[:, :-1, :]], axis = 2)
+		rnn_output = np.concatenate([z[:, 1:, :], rew[:, 1:, :]], axis = 2) #, done[:, 1:, :]
+
+
+"""
+
+N=100
+SERIES_DIR = "./DATA/"
+
+BATCH_SIZE=100
+NUM_STEPS=4000
+
+def get_filelist(N):
+    filelist = os.listdir(SERIES_DIR)
+    filelist = [x for x in filelist if x != '.DS_Store']
+    filelist.sort()
+    length_filelist = len(filelist)
+
+
+    if length_filelist > N:
+      filelist = filelist[:N]
+
+    if length_filelist < N:
+      N = length_filelist
+
+    return filelist, N
+
+
+def random_batch(filelist, batch_size=10):
+	N_data = len(filelist)
+	indices = np.random.permutation(N_data)[0:batch_size]
+
+	z_list = []
+	action_list = []
+	rew_list = []
+	done_list = [] ;z_list_fs = []
+
+	for i in indices:
+		#try:
+			new_data = np.load(SERIES_DIR + filelist[i], allow_pickle=True)
+
+			mu = new_data['mu']
+			log_var = new_data['logvar']
+			action = new_data['action']
+			reward = new_data['reward'];z_fs = new_data['z_gs']
+
+			#reward = np.expand_dims(reward, axis=2)
+
+
+			s = log_var.shape
+
+			z = mu + np.exp(log_var/2.0) * np.random.randn(*s)
+
+			z_list.append(z);z_list_fs.append(z_fs)
+			action_list.append(action)
+			rew_list.append(reward)
+		#except:
+		#	pass
+
+	z_list = np.array(z_list);z_list_fs=np.array(z_list_fs)
+	action_list = np.array(action_list)
+	rew_list = np.array(rew_list)
+
+	return z_list, z_list_fs ,action_list, rew_list
+
+def get_rnn_inputs(z, action, reward, z_true):
+
+     # function to format batch data to rnn inputs
+
+       temp=np.zeros((z.shape[0], 3))
+       temp[:,0]= action[0]
+       temp[:,1]=action[1]
+       temp[:,2]=reward
+
+       aa=np.concatenate((z, temp), axis=1)
+
+       aa=np.expand_dims(aa,axis=1)
+
+       #print(aa.shape)
+       #print(z_true[1].shape)
+
+       return aa, z_true
+
+filelist, N= get_filelist(N)
+
 class MDNRNN():
 
     def __init__(self):
@@ -26,71 +121,101 @@ class MDNRNN():
         self.model_dir = self.logdir + '/final_model'
 
 
-        self.inputs = tf.placeholder(tf.float32, shape=[None, None, self.Z_dim+self.action_dim])
-        self.y = tf.placeholder(tf.float32, shape=[None, None, self.Z_dim])
+        self.inputs = tf.placeholder(tf.float32, shape=[None, None, self.Z_dim+self.action_dim+1])  # batch size sequence lenght, VAE_z_dim + action_dim+rewards
+        self.z_true = tf.placeholder(tf.float32, shape=[None, self.Z_dim])
         self.learning_rate = tf.placeholder(tf.float32, [], name='learning_rate')
 
 
         self.rnn, self.mdn=self.build_models()
 
         self.lstm_output, self.hidden_state, self.cell_state= self.rnn(self.inputs)
+        print(self.lstm_output)
         #self.lstm_output_reshape = tf.reshape(self.lstm_output, [-1, self.hidden_units])
-        self.mdn_output=self.mdn(self.lstm_output)
-        self.mdn_output_reshape = tf.reshape(self.mdn_output, [-1, self.gaussian_mixtures_number*3])
+        self.y_predicted = self.mdn(self.lstm_output)
 
-        out_logmix, out_mean, out_logstd = self.get_mdn_coef(self.mdn_output_reshape)
-
-        # reshape target data so that it is compatible with prediction shape
-        flat_target_data = tf.reshape(self.y, [-1, 1])
-
-        self.loss = self.get_loss(out_logmix, out_mean, out_logstd, flat_target_data)
-
-        self.cost = tf.reduce_mean(self.loss)
+        self.z_loss=self.get_z_loss(self.z_true, self.y_predicted)
+        self.reward_loss=self.get_reward_loss(self.z_true, self.y_predicted)
 
 
-
+        #self.loss= Z_factor * self.z_loss + R_factor * self.reward_loss #NOT TRAING WITH REWARDS OUTPUTS
+        self.loss=self.z_loss
         self.list_gradients = self.rnn.trainable_variables + self.mdn.trainable_variables
 
         #for op in self.list_gradients:
             #print(op)
-        self.Optimizer = tf.train.AdamOptimizer(learning_rate=self.learning_rate, beta1=0.5).minimize(self.loss, var_list=self.list_gradients)
+
+        self.Optimizer = tf.train.AdamOptimizer(learning_rate=self.learning_rate, beta1=0.5)
+
+        gvs = self.Optimizer.compute_gradients(self.loss)
+        capped_gvs = [(tf.clip_by_value(grad, -CLIP_GRADIENT, CLIP_GRADIENT ), var) for grad, var in gvs]
+        self.train_op = self.Optimizer.apply_gradients(capped_gvs, name='train_step')
+
+        #TODO: add gradient clipping as it as an RNN to avoid back-prop time issues
 
         self.init = tf.global_variables_initializer()
         self.saver = tf.train.Saver()
 
-        print("Completed createing the model")
+        print("Completed creating the model")
 
     def build_models(self):
 
 
-
        lstm_input = tf.keras.layers.Input(shape=(None,self.Z_dim+self.action_dim+1))  #plus 1 is for reward
-       lstm_ouput, final_hidden_state, final_carry_state =tf.keras.layers.LSTM(self.hidden_units, return_state=True)(lstm_input)
+       lstm_output, final_hidden_state, final_carry_state =tf.keras.layers.LSTM(self.hidden_units, return_state=True)(lstm_input)
 
        mnd_input = tf.keras.layers.Input(shape=(None, self.hidden_units))
        mdn =tf.keras.layers.Dense(self.gaussian_mixtures_number*3*(self.Z_dim))(mnd_input)  #3*as MDN as three output parameter
 
 
-       lstm_model = tf.keras.Model([lstm_input], [lstm_ouput, final_hidden_state, final_carry_state])
+       lstm_model = tf.keras.Model([lstm_input], [lstm_output, final_hidden_state, final_carry_state])
        mdn_model = tf.keras.Model( [mnd_input], [mdn])
 
-       print(lstm_model.summary())
-       print(mdn_model.summary)
+       #print(lstm_model.summary())
+       #print(mdn_model.summary)
        print("Print hidden")
        print(final_hidden_state)
-
+       print(lstm_output)
 
        return lstm_model, mdn_model
 
 
+    def get_z_loss(self, z_true, y_predicted):
+
+        #z_true,reward_true=self.split_outputs(y_true)
+        #z_predict=y_predicted[:,:(GMM_DIM*VAE_LATENT_DIM*3)]
+        z_predict=y_predicted
+        z_predict = tf.reshape(z_predict, [-1, GMM_DIM * 3])
+
+        out_logmix, out_mean, out_logstd = self.get_mdn_coef(z_predict)
+
+        # reshape target data so that it is compatible with prediction shape
+        flat_target_data = tf.reshape(z_true, [-1, 1])
+
+        z_loss = self.compute_z_loss(out_logmix, out_mean, out_logstd, flat_target_data)
+
+        return z_loss
+
+    def get_reward_loss(self, y_true, y_pred):
+        z_true, rew_true = self.split_outputs(y_true)  # , done_true
+
+        reward_pred = y_pred[:, -1]
+
+        rew_loss = tf.keras.losses.binary_crossentropy(rew_true, reward_pred, from_logits=True)
+
+        rew_loss = tf.reduce_mean(rew_loss)
+
+        return rew_loss
 
     def tf_lognormal(self, y, mean, logstd):
         return -0.5 * ((y - mean) / tf.exp(logstd)) ** 2 - logstd - logSqrtTwoPI
 
-    def get_loss(self, logmix, mean, logstd, y):
+    def compute_z_loss(self, logmix, mean, logstd, y):
+
         v = logmix + self.tf_lognormal(y, mean, logstd)
         v = tf.reduce_logsumexp(v, 1, keepdims=True)
         return -tf.reduce_mean(v)
+
+
 
     def get_mdn_coef(self, output):
         logmix, mean, logstd = tf.split(output, 3, 1)
@@ -98,18 +223,45 @@ class MDNRNN():
         return logmix, mean, logstd
 
     def train(self):
-        return
+
+       steps=0;
+       #get random batch
+       with tf.Session(config=tf.ConfigProto(log_device_placement=True)) as self.sess:
+
+           self.sess.run(self.init)
+           for i in range(NUM_STEPS):
+               z, z_fs, action, reward = random_batch(filelist, batch_size=BATCH_SIZE)
+
+               steps+=1
+               if (steps==NUM_STEPS):
+                   break;
+
+               for i in range(BATCH_SIZE):
+
+                   y_in, z_true = get_rnn_inputs(z[i],  action[i], reward[i], z_fs[i])
+
+                   feed_dict = {self.inputs: y_in,
+                                self.z_true: z_true,
+                                self.learning_rate: LEARNING_RATE}
+
+                   loss, _ = self.sess.run( [self.z_loss,self.train_op], feed_dict=feed_dict)
+
+               print("Step :"+  str(steps)  +  "Loss :" + str(loss))
+
+           self.save_model()
+
+       return
 
 
     def predict(self):
         return
 
 
-    def save_model(self, model_name):
+    def save_model(self):
 
         print ("Saving the model after training")
-        if (os.path.exists(self.model_dir)):
-            shutil.rmtree(self.model_dir, ignore_errors=True)
+        if (os.path.exists(self.model_dir)==False):
+            #shutil.rmtree(self.model_dir, ignore_errors=True)
             os.makedirs(self.model_dir)
 
 
@@ -131,12 +283,23 @@ class MDNRNN():
 
     def step_decay(self, epoch):
         initial_lrate=0.001
-        drop = 0.5
+        drop = 0.1
         epochs_drop=4
         lrate= initial_lrate* math.pow(drop, math.floor((1+epoch)/epochs_drop))
         return lrate
+
+    def split_outputs(self, y_true):
+        z_true = y_true[:, :VAE_LATENT_DIM]
+        rew_true = y_true[:, -1]
+        # done_true = y_true[:,:,(Z_DIM + 1):]
+
+        return z_true, rew_true  # , done_true
 
 
 if __name__ == '__main__':
 
     model=MDNRNN()
+    model.train()
+
+
+

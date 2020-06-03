@@ -17,7 +17,7 @@ import shutil
 LOG_FILENAME="./logs/VAE_TRAINING.LOG"
 logging.basicConfig(filename=LOG_FILENAME, level=logging.DEBUG)
 
-MAX_ROLLOUTS=2000
+MAX_ROLLOUTS=5000
 SERIES_DIR = "./DATA"
 
 if  not os.path.exists(SERIES_DIR):
@@ -35,6 +35,7 @@ class CVAE(tf.keras.Model):
         self.training_datadir='/media/DATA/ML_data/fastmri/singlecoil/train/singlecoil_train/'
 
         self.BATCH_SIZE = 16
+        self.BATCH_SIZE2= 1
         self.num_epochs = 25
         self.learning_rate = 1e-3
         self.model_name="CVAE"
@@ -340,26 +341,62 @@ class CVAE(tf.keras.Model):
         lrate= initial_lrate* math.pow(drop, math.floor((1+epoch)/epochs_drop))
         return lrate
 
-    def save_images(self, numpy_array, tag):
+    def save_images_2(self, recon_array, fully_sampled, tag):
 
         fig = plt.figure(figsize=(4,4))
 
-        for i in range(numpy_array.shape[0]):
-            plt.subplot(4,4,i+1)
-            plt.imshow(numpy_array[i,:,:,0], cmap='gray')
-            plt.axis("off")
-
-        filename=self.image_dir + '_image_at_epoch_' + tag + '_.png';
-        plt.savefig(filename)
-
-    def generate_rollouts(self):
 
 
-        file_list=[]
-        action_list=[]
-        reward_list=[]
-        mu_list= []
-        logvar_list =[]
+        number_images=(recon_array.shape[0])
+        #print(number_images)
+
+        plot_number=1
+
+        if (number_images > 10):
+
+            for i in range(int(number_images/2)):
+                plt.subplot(4,4, plot_number);
+                plot_number +=1;
+                plt.imshow(recon_array[i,:,:,0], cmap='gray')
+                plt.axis("off")
+                if plot_number < 5:
+                    plt.title("VAE")
+
+                plt.subplot(4,4,plot_number);
+                plot_number +=1;
+                plt.imshow(fully_sampled[i,:,:,0], cmap='gray')
+                plt.axis("off")
+                if plot_number <5:
+                 plt.title("FS")
+
+
+            filename=self.image_dir + '_rollout_' + tag + '_.png';
+            plt.savefig(filename)
+            plt.close()
+
+
+    def save_images(self, numpy_array,tag):
+
+        fig = plt.figure(figsize=(4,4))
+
+
+
+        number_images=(numpy_array.shape[0])
+        print(number_images)
+        print(numpy_array.shape)
+
+        if (number_images > 10):
+
+            for i in range(number_images):
+                plt.subplot(4,4,i+1)
+                plt.imshow(numpy_array[i,:,:,0], cmap='gray')
+                plt.axis("off")
+
+            filename=self.image_dir + '_image_at_epoch_' + tag + '_.png';
+            plt.savefig(filename)
+            plt.close()
+
+    def generate_rollouts(self, initial_counter):
 
 
 
@@ -371,16 +408,16 @@ class CVAE(tf.keras.Model):
             filenames = list(pathlib.Path(self.training_datadir).iterdir())
             np.random.shuffle(filenames)
 
-            counter=0
+            counter=initial_counter
             np.random.shuffle(filenames)
             for file in filenames:
 
                 print(file)
 
-                if counter == MAX_ROLLOUTS:
+                if counter == initial_counter+100:
                     break
 
-                reward=0
+                reward=0; reward_gs=0;
 
                 centre_fraction, acceleration = get_random_accelerations(high=10)
                 # training_images: fully sampled MRI images
@@ -390,11 +427,18 @@ class CVAE(tf.keras.Model):
 
                 action=(centre_fraction, acceleration)
 
-                for idx in range(0, batch_length, self.BATCH_SIZE):
-                    print(reward)
+                z_batch=np.zeros(shape=(batch_length, self.latent_dim))
+                mu_batch=np.zeros(shape=(batch_length, self.latent_dim))
+                logvar_batch=np.zeros(shape=(batch_length, self.latent_dim))
+                z_batch_gs = np.zeros(shape=(batch_length, self.latent_dim))
+                mu_batch_gs = np.zeros(shape=(batch_length, self.latent_dim))
+                logvar_batch_gs = np.zeros(shape=(batch_length, self.latent_dim))
 
-                    batch_images = training_images[idx:idx + self.BATCH_SIZE, :, :]
-                    batch_labels = training_labels[idx:idx + self.BATCH_SIZE, :, :]
+                for idx in range(0, batch_length, self.BATCH_SIZE2):
+
+
+                    batch_images = training_images[idx:idx + self.BATCH_SIZE2, :, :]
+                    batch_labels = training_labels[idx:idx + self.BATCH_SIZE2, :, :]
 
                     feed_dict = {self.input_image_1: batch_images,
                                  self.gold_standard_image_1: batch_labels}
@@ -403,24 +447,44 @@ class CVAE(tf.keras.Model):
                         [self.z, self.mean, self.logvar, self.reconstructed,  self.sse_loss],
                         feed_dict=feed_dict)
 
+                    z_gs, mean_gs, logvar_gs, reconstructed_images_gs, recon_loss_gs, = self.sess.run(
+                        [self.z, self.mean, self.logvar, self.reconstructed, self.sse_loss],
+                        feed_dict=feed_dict)
+
                     reward += recon_loss
+                    reward_gs += recon_loss_gs
 
-                    counter += 1
+                    z_batch[idx:idx + self.BATCH_SIZE, :] =z
+                    z_batch_gs[idx:idx + self.BATCH_SIZE, :] = z_gs
+                    mu_batch[idx:idx + self.BATCH_SIZE, :] = mean
+                    mu_batch_gs[idx:idx + self.BATCH_SIZE, :] = mean_gs
+                    logvar_batch[idx:idx + self.BATCH_SIZE, :] = logvar
+                    logvar_batch_gs[idx:idx + self.BATCH_SIZE, :] = logvar_gs
 
+
+                    #self.save_images_2(reconstructed_images, batch_labels, str(counter)+ "a_"+str(acceleration))
+
+                counter += 1
                 print("Rollout completed: " + str(counter))
 
-                file_list.append(file)
-                action_list.append(action)
-                reward_list.append(reward)
-                mu_list.append(mean)
-                logvar_list.append(logvar)
-
-            np.savez_compressed(os.path.join(SERIES_DIR, "vae_series.npz"), datafile=file_list, action=action_list, mu=mu_list,
-                                    logvar=logvar_list, reward=reward_list,)
+                np.savez_compressed(os.path.join(SERIES_DIR, "vae_series" + str(counter) + ".npz"), datafile=file, action=action, mu_gs=mu_batch_gs,
+                                    logvar=logvar_batch, reward=reward, reward_gs=reward_gs,  mu=mu_batch,
+                                    logvar_gs=logvar_batch_gs,  z_gs=z_batch_gs, z=z_batch)
 
 
 if __name__ == '__main__':
 
     model=CVAE()
-    model.train()
-    model.generate_rollouts()
+    #model.train()
+    model.generate_rollouts(initial_counter=0)
+    model.generate_rollouts(initial_counter=100)
+    model.generate_rollouts(initial_counter=200)
+    model.generate_rollouts(initial_counter=300)
+    model.generate_rollouts(initial_counter=400)
+    model.generate_rollouts(initial_counter=500)
+    model.generate_rollouts(initial_counter=600)
+    model.generate_rollouts(initial_counter=700)
+    model.generate_rollouts(initial_counter=800)
+    model.generate_rollouts(initial_counter=900)
+    model.generate_rollouts(initial_counter=10000)
+
