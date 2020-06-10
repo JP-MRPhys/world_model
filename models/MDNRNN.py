@@ -125,12 +125,9 @@ class MDNRNN():
         self.z_true = tf.placeholder(tf.float32, shape=[None, self.Z_dim])
         self.learning_rate = tf.placeholder(tf.float32, [], name='learning_rate')
 
-
-        self.rnn, self.mdn=self.build_models()
+        self.rnn, self.mdn= self.build_models()
 
         self.lstm_output, self.hidden_state, self.cell_state= self.rnn(self.inputs)
-        print(self.lstm_output)
-        #self.lstm_output_reshape = tf.reshape(self.lstm_output, [-1, self.hidden_units])
         self.y_predicted = self.mdn(self.lstm_output)
 
         self.z_loss=self.get_z_loss(self.z_true, self.y_predicted)
@@ -161,7 +158,14 @@ class MDNRNN():
 
 
        lstm_input = tf.keras.layers.Input(shape=(None,self.Z_dim+self.action_dim+1))  #plus 1 is for reward
+       lstm_input_h = tf.keras.layers.Input(shape=(None,self.hidden_units))
+       lstm_input_c = tf.keras.layers.Input(shape=(self.hidden_units,self.hidden_units))
+       print(lstm_input_c)
+
+
        lstm_output, final_hidden_state, final_carry_state =tf.keras.layers.LSTM(self.hidden_units, return_state=True)(lstm_input)
+       print(final_hidden_state)
+       print(final_carry_state)
 
        mnd_input = tf.keras.layers.Input(shape=(None, self.hidden_units))
        mdn =tf.keras.layers.Dense(self.gaussian_mixtures_number*3*(self.Z_dim))(mnd_input)  #3*as MDN as three output parameter
@@ -169,6 +173,8 @@ class MDNRNN():
 
        lstm_model = tf.keras.Model([lstm_input], [lstm_output, final_hidden_state, final_carry_state])
        mdn_model = tf.keras.Model( [mnd_input], [mdn])
+
+
 
        #print(lstm_model.summary())
        #print(mdn_model.summary)
@@ -253,9 +259,19 @@ class MDNRNN():
        return
 
 
-    def predict(self):
-        return
+    def predict(self, rnn_inputs):
 
+        with tf.Session(config=tf.ConfigProto(log_device_placement=True)) as self.sess:
+            a = os.path.join(self.final_model_dir, self.model_name)
+            self.saver.restore(self.sess, a)
+
+            feed_dict = {self.inputs: rnn_inputs}
+
+            _, hidden, cell, z_predicted = self.sess.run(
+                [self.lstm_output, self.hidden_state, self.cell_state, self.y_predicted],
+                feed_dict=feed_dict)
+
+            return hidden, cell, z_predicted
 
     def save_model(self):
 
@@ -299,7 +315,7 @@ class MDNRNN():
 if __name__ == '__main__':
 
     model=MDNRNN()
-    model.train()
+    #model.train()
 
 
 

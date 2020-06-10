@@ -178,7 +178,7 @@ class CVAE(tf.keras.Model):
         return eps * tf.sqrt(tf.exp(logvar)) + mean
 
 
-    def encoder_predict(self, input_image):
+    def encorder_predict(self, input_image):
 
         with tf.Session(config=tf.ConfigProto(log_device_placement=True)) as self.sess:
 

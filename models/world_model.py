@@ -150,7 +150,8 @@ class Model:
 
     def update(self, obs, t):
         if obs.shape == self.vae.input_dim:
-            return self.vae.encoder(np.array([obs]))[0]
+            z, _, _ =self.vae.encorder_predict(np.array[obs])
+            return z
         else:
             return obs
 
@@ -184,11 +185,10 @@ def simulate(model, num_episode=5, seed=-1, max_len=-1, generate_data_mode=False
     if (seed >= 0):
         random.seed(seed)
         np.random.seed(seed)
-        model.env.seed(seed)
-
+        model.env.seed(seed) #TODO
     for episode in range(num_episode):
 
-        model.reset()
+        model.reset()  #TOCHECK
 
         obs = model.env.reset()
         reward = 0
@@ -219,11 +219,11 @@ def simulate(model, num_episode=5, seed=-1, max_len=-1, generate_data_mode=False
             input_to_rnn = [np.array([[np.concatenate([vae_encoded_obs, action, [reward]])]]), np.array([model.hidden]),
                             np.array([model.cell_values])]
 
-            #TODO: change this out = model.rnn.forward.predict(input_to_rnn)
+            y_pred_rnn, rnn_hidden, rnn_cell = model.rnn.predict(input_to_rnn)
 
-            y_pred = out[0][0][0]
-            model.hidden = out[1][0]
-            model.cell_values = out[2][0]
+            y_pred = y_pred_rnn
+            model.hidden = rnn_hidden
+            model.cell_values = rnn_cell
 
             controller_obs = np.concatenate([vae_encoded_obs, model.hidden])
 
