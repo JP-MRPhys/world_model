@@ -195,8 +195,6 @@ class MDNRNN():
        print(final_hidden_state)
        print(lstm_output)
 
-
-
        return lstm_model, mdn_model, predication_model
 
 
