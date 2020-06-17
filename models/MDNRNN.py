@@ -122,16 +122,28 @@ class MDNRNN():
 
 
         self.inputs = tf.placeholder(tf.float32, shape=[None, None, self.Z_dim+self.action_dim+1])  # batch size sequence lenght, VAE_z_dim + action_dim+rewards
+        self.lstm_inputs_c = tf.placeholder(tf.float32, shape=[None,self.hidden_units])
+        self.lstm_inputs_h = tf.placeholder(tf.float32, shape=[None,self.hidden_units])
         self.z_true = tf.placeholder(tf.float32, shape=[None, self.Z_dim])
         self.learning_rate = tf.placeholder(tf.float32, [], name='learning_rate')
 
-        self.rnn, self.mdn= self.build_models()
+        self.rnn, self.mdn, self.rnn_predictions= self.build_models()
 
         self.lstm_output, self.hidden_state, self.cell_state= self.rnn(self.inputs)
-        self.y_predicted = self.mdn(self.lstm_output)
 
-        self.z_loss=self.get_z_loss(self.z_true, self.y_predicted)
-        self.reward_loss=self.get_reward_loss(self.z_true, self.y_predicted)
+        self.lstm_output_p, self.hidden_state_p, self.cell_state_p = self.rnn_predictions([self.inputs, self.lstm_inputs_h, self.lstm_inputs_c]) #feed sin predcitions
+
+
+
+
+
+        self.y_= self.mdn(self.lstm_output)
+
+        self.y_predicted = self.mdn(self.lstm_output_p)
+
+
+        self.z_loss=self.get_z_loss(self.z_true, self.y_)
+        self.reward_loss=self.get_reward_loss(self.z_true, self.y_)
 
 
         #self.loss= Z_factor * self.z_loss + R_factor * self.reward_loss #NOT TRAING WITH REWARDS OUTPUTS
@@ -162,19 +174,20 @@ class MDNRNN():
        lstm_input_c = tf.keras.layers.Input(shape=(self.hidden_units,self.hidden_units))
        print(lstm_input_c)
 
+       lstm = tf.keras.layers.LSTM(self.hidden_units, return_state=True)
 
-       lstm_output, final_hidden_state, final_carry_state =tf.keras.layers.LSTM(self.hidden_units, return_state=True)(lstm_input)
-       print(final_hidden_state)
-       print(final_carry_state)
+       lstm_output, final_hidden_state, final_carry_state = lstm(lstm_input)
+       # need to create a copy so that prediction model can input the lstm states during preditions i.e. traning controller
+       lstm_output_p, final_hidden_state_p, final_carry_state_p = lstm(lstm_input,
+                                                                       initial_state=[lstm_input_h, lstm_input_c])
 
        mnd_input = tf.keras.layers.Input(shape=(None, self.hidden_units))
        mdn =tf.keras.layers.Dense(self.gaussian_mixtures_number*3*(self.Z_dim))(mnd_input)  #3*as MDN as three output parameter
 
 
        lstm_model = tf.keras.Model([lstm_input], [lstm_output, final_hidden_state, final_carry_state])
-       mdn_model = tf.keras.Model( [mnd_input], [mdn])
-
-
+       predication_model= tf.keras.Model([lstm_input,lstm_input_h, lstm_input_c], [lstm_output, final_hidden_state_p, final_carry_state_p])
+       mdn_model = tf.keras.Model([mnd_input], [mdn])
 
        #print(lstm_model.summary())
        #print(mdn_model.summary)
@@ -182,7 +195,9 @@ class MDNRNN():
        print(final_hidden_state)
        print(lstm_output)
 
-       return lstm_model, mdn_model
+
+
+       return lstm_model, mdn_model, predication_model
 
 
     def get_z_loss(self, z_true, y_predicted):
@@ -259,13 +274,13 @@ class MDNRNN():
        return
 
 
-    def predict(self, rnn_inputs):
+    def predict(self, rnn_inputs, hidden, cell_state):
 
         with tf.Session(config=tf.ConfigProto(log_device_placement=True)) as self.sess:
             a = os.path.join(self.final_model_dir, self.model_name)
             self.saver.restore(self.sess, a)
 
-            feed_dict = {self.inputs: rnn_inputs}
+            feed_dict = {self.inputs: rnn_inputs, self.lstm_inputs_h: hidden, self.lstm_inputs_c: cell_state}
 
             _, hidden, cell, z_predicted = self.sess.run(
                 [self.lstm_output, self.hidden_state, self.cell_state, self.y_predicted],
