@@ -1,0 +1,5 @@
+model_checkpoint_path: "CVAE"
+all_model_checkpoint_paths: "../intraining/0"
+all_model_checkpoint_paths: "../intraining/10"
+all_model_checkpoint_paths: "../intraining/20"
+all_model_checkpoint_paths: "CVAE"

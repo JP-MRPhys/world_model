@@ -1,0 +1,2 @@
+model_checkpoint_path: "MDNRNN"
+all_model_checkpoint_paths: "MDNRNN"
