@@ -10,3 +10,4 @@ training_datadir = '/media/DATA/ML_data/fastmri/singlecoil/train/singlecoil_trai
 
 if __name__ == '__main__':
 
+ pass

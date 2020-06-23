@@ -24,17 +24,13 @@ ADD_NOISE = False
 
 
 def make_model():
+
     vae =CVAE()
-    #vae.load_model(vae.model_name)
-    #vae.set_weights('./vae/weights.h5')
-
     rnn = MDNRNN()
-    #rnn.set_weights('./rnn/weights.h5')
-    #rnn.load_model(rnn.model_name)
-
     controller = Controller()
 
     model = Model(controller, vae, rnn)
+
     return model
 
 
@@ -164,13 +160,6 @@ def evaluate(model, num_episode, max_len):
     return reward, total_reward
 
 
-def compress_input_dct(obs):
-    new_obs = np.zeros((8, 8))
-    for i in range(obs.shape[2]):
-        new_obs = +compress_2d(obs[:, :, i] / 255., shape=(8, 8))
-    new_obs /= float(obs.shape[2])
-    return new_obs.flatten()
-
 
 def simulate(model, num_episode=5, seed=-1, max_len=-1, generate_data_mode=False, render_mode=False):
     reward_list = []
@@ -186,6 +175,7 @@ def simulate(model, num_episode=5, seed=-1, max_len=-1, generate_data_mode=False
         random.seed(seed)
         np.random.seed(seed)
         model.env.seed(seed) #TODO
+
     for episode in range(num_episode):
 
         model.reset()  #TOCHECK
@@ -199,13 +189,14 @@ def simulate(model, num_episode=5, seed=-1, max_len=-1, generate_data_mode=False
 
         total_reward = 0.0
 
-        model.env.render("rgb_array")
+        #model.env.render("rgb_array")
 
         for t in range(max_episode_length):
 
             if obs.shape == model.vae.input_dim:  ### running in real environment
-                obs = config.adjust_obs(obs)
-                reward = config.adjust_reward(reward)
+                #obs = config.adjust_obs(obs)  obss are normalised in the enviroment itself
+                #reward = config.adjust_reward(reward) rewards are normalised
+                pass
 
             if render_mode:
                 model.env.render("human")
@@ -228,7 +219,8 @@ def simulate(model, num_episode=5, seed=-1, max_len=-1, generate_data_mode=False
             controller_obs = np.concatenate([vae_encoded_obs, model.hidden])
 
             if generate_data_mode:
-                action = config.generate_data_action(t=t, env=model.env)
+                #action = config.generate_data_action(t=t, env=model.env)  #not used
+                pass
             else:
                 action = model.get_action(controller_obs, t=t, add_noise=ADD_NOISE)
 
@@ -253,6 +245,7 @@ def simulate(model, num_episode=5, seed=-1, max_len=-1, generate_data_mode=False
 
 
 def main(args):
+
     global RENDER_DELAY
 
     env_name = args.env_name
@@ -297,25 +290,23 @@ def main(args):
         print("seed", the_seed, "average_reward", total_reward / 100)
     else:
         if record_video:
-            model.env = Monitor(model.env, directory='./videos', video_callable=lambda episode_id: True,
-                                write_upon_reset=True, force=True)
+            #model.env = Monitor(model.env, directory='./videos', video_callable=lambda episode_id: True, write_upon_reset=True, force=True)
+            print("")
+            exit
         while (1):
-            reward, steps_taken = simulate(model, render_mode=render_mode, num_episode=1, max_len=max_length,
-                                           generate_data_mode=generate_data_mode)
+            reward, steps_taken = simulate(model, render_mode=render_mode, num_episode=1, max_len=max_length, generate_data_mode=generate_data_mode)
             print("terminal reward", reward, "average steps taken", np.mean(steps_taken) + 1)
             # break
 
 
 if __name__ == "__main__":
+
     parser = argparse.ArgumentParser(description=('View a trained agent'))
-    parser.add_argument('env_name', type=str,
-                        help='car_racing etc - this is only used for labelling files etc, the actual environments are defined in train_envs in config.py')
+    parser.add_argument('env_name', type=str,  help='car_racing etc - this is only used for labelling files etc, the actual environments are defined in train_envs in config.py')
     parser.add_argument('--filename', type=str, default='', help='Path to the trained model json file')
     parser.add_argument('--seed', type=int, default=111, help='which seed?')
-    parser.add_argument('--final_mode', action='store_true',
-                        help='select this to test a given controller over 100 trials')
-    parser.add_argument('--generate_data_mode', action='store_true',
-                        help='uses the pick_random_action function from config')
+    parser.add_argument('--final_mode', action='store_true',  help='select this to test a given controller over 100 trials')
+    parser.add_argument('--generate_data_mode', action='store_true', help='uses the pick_random_action function from config')
     parser.add_argument('--dream_mode', action='store_true', help='run the model in the dreams of the agent')
     parser.add_argument('--render_mode', action='store_true', help='render the run')
     parser.add_argument('--record_video', action='store_true', help='record the run to ./videos')

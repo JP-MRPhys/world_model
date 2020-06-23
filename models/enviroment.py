@@ -70,3 +70,7 @@ class fastMRIEnviroment(object):
         random.shuffle(self.filenames)
 
 
+
+    def close(self):    
+      pass
+
