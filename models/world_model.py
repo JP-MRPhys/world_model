@@ -23,7 +23,7 @@ record_video = False
 ADD_NOISE = False
 
 
-FASTMRI_DATADIR= "/home/jehillparikh/world_models/DATA/fastmri_data/single_coil_train/"
+FASTMRI_DATADIR= "/home/jehillparikh/world_models/DATA/fastmri_data/singlecoil_train/"
 
 def make_model():
 
