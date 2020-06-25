@@ -8,7 +8,8 @@ import pathlib
 #from utils.subsample import MaskFunc
 #import utils.transforms as T
 from matplotlib import pyplot as plt
-from models.utils.fastmri_data import get_training_pair_images_vae, get_random_accelerations
+#from models.utils.fastmri_data import get_training_pair_images_vae, get_random_accelerations
+from fastmri_data import get_training_pair_images_vae, get_random_accelerations
 import math
 import logging
 import shutil
