@@ -14,7 +14,7 @@ import random
 
 from pympler.tracker import SummaryTracker  #TODO install this
 
-from models.world_model import make_model, simulate
+from world_model import make_model, simulate
 from utils.es import CMAES, SimpleGA, OpenES, PEPG
 import argparse
 import time
