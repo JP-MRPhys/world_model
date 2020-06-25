@@ -2,11 +2,12 @@ import pandas as pd
 import numpy as np
 import pathlib
 from datetime import datetime, timedelta
-from  utils.fastmri_data import get_training_pair_images_vae, get_random_accelerations
+from  .. utils.fastmri_data import get_training_pair_images_vae, get_random_accelerations
 import random
+
 #action is the random accelerating factors  see how these are selected by others
-# state after taking action is the undersampled image
-# reward is the squared difference between undersample and fully sampled gold standard
+#state after taking action is the undersampled image
+#reward is the squared difference between undersample and fully sampled gold standard
 
 class fastMRIEnviroment(object):
     def __init__(self, datadir):
