@@ -9,10 +9,10 @@ import argparse
 #import config
 
 
-from models.enviroment import fastMRIEnviroment
-from models.VAE import CVAE
-from models.MDNRNN import MDNRNN
-from models.controller import Controller
+from enviroment import fastMRIEnviroment
+from VAE import CVAE
+from MDNRNN import MDNRNN
+from controller import Controller
 
 final_mode = False
 render_mode = False
