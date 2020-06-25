@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import pathlib
 from datetime import datetime, timedelta
-from  ..utils.fastmri_data import get_training_pair_images_vae, get_random_accelerations
+from  utils.fastmri_data import get_training_pair_images_vae, get_random_accelerations
 import random
 #action is the random accelerating factors  see how these are selected by others
 # state after taking action is the undersampled image
