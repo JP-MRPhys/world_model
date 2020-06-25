@@ -133,10 +133,6 @@ class MDNRNN():
 
         self.lstm_output_p, self.hidden_state_p, self.cell_state_p = self.rnn_predictions([self.inputs, self.lstm_inputs_h, self.lstm_inputs_c]) #feed sin predcitions
 
-
-
-
-
         self.y_= self.mdn(self.lstm_output)
 
         self.y_predicted = self.mdn(self.lstm_output_p)
@@ -156,7 +152,8 @@ class MDNRNN():
         self.Optimizer = tf.train.AdamOptimizer(learning_rate=self.learning_rate, beta1=0.5)
 
         gvs = self.Optimizer.compute_gradients(self.loss)
-        capped_gvs = [(tf.clip_by_value(grad, -CLIP_GRADIENT, CLIP_GRADIENT ), var) for grad, var in gvs]
+        #capped_gvs = [(tf.clip_by_value(grad, -CLIP_GRADIENT, CLIP_GRADIENT ), var) for grad, var in gvs]
+        capped_gvs=gvs
         self.train_op = self.Optimizer.apply_gradients(capped_gvs, name='train_step')
 
         #TODO: add gradient clipping as it as an RNN to avoid back-prop time issues
