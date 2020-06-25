@@ -67,7 +67,7 @@ class Model:
         self.hidden = np.zeros(self.rnn.hidden_units)
         self.cell_values = np.zeros(self.rnn.hidden_units)
 
-        self.shapes = [(self.rnn.hidden_units + self.rnn.z_dim, self.output_size)]
+        self.shapes = [(self.rnn.hidden_units + self.vae.latent_dim, self.output_size)]
 
         idx = 0
         for shape in self.shapes:
