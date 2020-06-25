@@ -12,7 +12,7 @@ import sys
 import pickle
 
 from world_model import make_model, simulate
-from models.utils.es import CMAES, SimpleGA, OpenES, PEPG
+from utils.es import CMAES, SimpleGA, OpenES, PEPG
 import argparse
 import time
 
