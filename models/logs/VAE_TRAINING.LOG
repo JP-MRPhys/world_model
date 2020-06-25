@@ -1,0 +1,753 @@
+WARNING:tensorflow:From /home/jehill/anaconda3/lib/python3.6/site-packages/tensorflow/python/ops/resource_variable_ops.py:435: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+DEBUG:root:Completed creating the model
+DEBUG:root:************************ epoch:0*****************
+DEBUG:root:Epoch: 0 learning rate:0.001ELBO: -2109.7388
+DEBUG:root:Epoch: 0 learning rate:0.001ELBO: -2863.813
+DEBUG:root:Epoch: 0 learning rate:0.001ELBO: -4449.9907
+DEBUG:root:Epoch: 0 learning rate:0.001ELBO: -666.1813
+DEBUG:root:Epoch: 0 learning rate:0.001ELBO: -3449.0688
+DEBUG:root:Epoch: 0 learning rate:0.001ELBO: -2242.2048
+DEBUG:root:Epoch: 0 learning rate:0.001ELBO: -6329.813
+DEBUG:root:Epoch: 0 learning rate:0.001ELBO: -1602.3451
+DEBUG:root:Epoch: 0 learning rate:0.001ELBO: -4434.3906
+DEBUG:root:Epoch: 0 learning rate:0.001ELBO: -1765.2686
+DEBUG:root:Epoch: 0 learning rate:0.001ELBO: -3622.887
+DEBUG:root:Epoch: 0 learning rate:0.001ELBO: -2438.8718
+DEBUG:root:Epoch: 0 learning rate:0.001ELBO: -4774.5703
+DEBUG:root:Epoch: 0 learning rate:0.001ELBO: -871.3586
+DEBUG:root:Epoch: 0 learning rate:0.001ELBO: -1477.5352
+DEBUG:root:Epoch: 0 learning rate:0.001ELBO: -3256.7437
+DEBUG:root:Epoch: 0 learning rate:0.001ELBO: -947.6276
+DEBUG:root:Epoch: 0 learning rate:0.001ELBO: -2102.9224
+DEBUG:root:Epoch: 0 learning rate:0.001ELBO: -1068.5873
+DEBUG:root:Epoch: 0 learning rate:0.001ELBO: -5088.669
+DEBUG:root:Epoch: 0 learning rate:0.001ELBO: -4762.315
+DEBUG:root:Epoch: 0 learning rate:0.001ELBO: -708.76166
+DEBUG:root:Epoch: 0 learning rate:0.001ELBO: -332.76544
+DEBUG:root:Epoch: 0 learning rate:0.001ELBO: -1323.58
+DEBUG:root:Epoch: 0completed
+DEBUG:root:Epoch: 0 learning rate:0.001ELBO: -2537.4417
+DEBUG:root:Completed saving the model
+DEBUG:root:************************ epoch:1*****************
+DEBUG:root:Epoch: 1 learning rate:0.0005ELBO: -990.5134
+DEBUG:root:Epoch: 1 learning rate:0.0005ELBO: -2319.906
+DEBUG:root:Epoch: 1 learning rate:0.0005ELBO: -5022.6636
+DEBUG:root:Epoch: 1 learning rate:0.0005ELBO: -430.56335
+DEBUG:root:Epoch: 1 learning rate:0.0005ELBO: -5307.5684
+DEBUG:root:Epoch: 1 learning rate:0.0005ELBO: -1802.2053
+DEBUG:root:Epoch: 1 learning rate:0.0005ELBO: -4320.361
+DEBUG:root:Epoch: 1 learning rate:0.0005ELBO: -1325.5085
+DEBUG:root:Epoch: 1 learning rate:0.0005ELBO: -916.26166
+DEBUG:root:Epoch: 1 learning rate:0.0005ELBO: -4847.9062
+DEBUG:root:Epoch: 1 learning rate:0.0005ELBO: -3277.765
+DEBUG:root:Epoch: 1 learning rate:0.0005ELBO: -3351.821
+DEBUG:root:Epoch: 1 learning rate:0.0005ELBO: -3272.9492
+DEBUG:root:Epoch: 1 learning rate:0.0005ELBO: -694.6737
+DEBUG:root:Epoch: 1 learning rate:0.0005ELBO: -474.07352
+DEBUG:root:Epoch: 1 learning rate:0.0005ELBO: -1718.2745
+DEBUG:root:Epoch: 1 learning rate:0.0005ELBO: -730.3863
+DEBUG:root:Epoch: 1completed
+DEBUG:root:************************ epoch:2*****************
+DEBUG:root:Epoch: 2 learning rate:0.0005ELBO: -1342.873
+DEBUG:root:Epoch: 2 learning rate:0.0005ELBO: -921.47345
+DEBUG:root:Epoch: 2 learning rate:0.0005ELBO: -2777.5789
+DEBUG:root:Epoch: 2 learning rate:0.0005ELBO: -2007.9879
+DEBUG:root:Epoch: 2 learning rate:0.0005ELBO: -2755.4524
+DEBUG:root:Epoch: 2 learning rate:0.0005ELBO: -1471.642
+DEBUG:root:Epoch: 2 learning rate:0.0005ELBO: -1455.9586
+DEBUG:root:Epoch: 2 learning rate:0.0005ELBO: -2211.6162
+DEBUG:root:Epoch: 2 learning rate:0.0005ELBO: -1562.4882
+DEBUG:root:Epoch: 2 learning rate:0.0005ELBO: -2504.9663
+DEBUG:root:Epoch: 2 learning rate:0.0005ELBO: -457.1224
+DEBUG:root:Epoch: 2 learning rate:0.0005ELBO: -4824.7207
+DEBUG:root:Epoch: 2 learning rate:0.0005ELBO: -2769.327
+DEBUG:root:Epoch: 2 learning rate:0.0005ELBO: -1535.4331
+DEBUG:root:Epoch: 2 learning rate:0.0005ELBO: -3659.4058
+DEBUG:root:Epoch: 2 learning rate:0.0005ELBO: -1812.7781
+DEBUG:root:Epoch: 2completed
+DEBUG:root:************************ epoch:3*****************
+DEBUG:root:Epoch: 3 learning rate:0.00025ELBO: -1380.0387
+DEBUG:root:Epoch: 3 learning rate:0.00025ELBO: -1921.3018
+DEBUG:root:Epoch: 3 learning rate:0.00025ELBO: -2537.6516
+DEBUG:root:Epoch: 3 learning rate:0.00025ELBO: -851.4887
+DEBUG:root:Epoch: 3 learning rate:0.00025ELBO: -1166.3384
+DEBUG:root:Epoch: 3 learning rate:0.00025ELBO: -1051.0465
+DEBUG:root:Epoch: 3 learning rate:0.00025ELBO: -762.82245
+DEBUG:root:Epoch: 3 learning rate:0.00025ELBO: -1071.9404
+DEBUG:root:Epoch: 3 learning rate:0.00025ELBO: -1050.9773
+DEBUG:root:Epoch: 3 learning rate:0.00025ELBO: -539.78815
+DEBUG:root:Epoch: 3 learning rate:0.00025ELBO: -444.625
+DEBUG:root:Epoch: 3 learning rate:0.00025ELBO: -1417.1532
+DEBUG:root:Epoch: 3 learning rate:0.00025ELBO: -418.32074
+DEBUG:root:Epoch: 3 learning rate:0.00025ELBO: -3691.461
+DEBUG:root:Epoch: 3 learning rate:0.00025ELBO: -1013.744
+DEBUG:root:Epoch: 3 learning rate:0.00025ELBO: -4285.4834
+DEBUG:root:Epoch: 3 learning rate:0.00025ELBO: -397.5498
+DEBUG:root:Epoch: 3 learning rate:0.00025ELBO: -1310.0626
+DEBUG:root:Epoch: 3 learning rate:0.00025ELBO: -1792.1816
+DEBUG:root:Epoch: 3 learning rate:0.00025ELBO: -1227.105
+DEBUG:root:Epoch: 3 learning rate:0.00025ELBO: -1807.8346
+DEBUG:root:Epoch: 3 learning rate:0.00025ELBO: -280.07523
+DEBUG:root:Epoch: 3 learning rate:0.00025ELBO: -2697.545
+DEBUG:root:Epoch: 3 learning rate:0.00025ELBO: -328.27496
+DEBUG:root:Epoch: 3 learning rate:0.00025ELBO: -914.538
+DEBUG:root:Epoch: 3 learning rate:0.00025ELBO: -1921.9547
+DEBUG:root:Epoch: 3 learning rate:0.00025ELBO: -1881.9558
+DEBUG:root:Epoch: 3completed
+DEBUG:root:************************ epoch:4*****************
+DEBUG:root:Epoch: 4 learning rate:0.00025ELBO: -492.59366
+DEBUG:root:Epoch: 4 learning rate:0.00025ELBO: -2427.1792
+DEBUG:root:Epoch: 4 learning rate:0.00025ELBO: -674.101
+DEBUG:root:Epoch: 4 learning rate:0.00025ELBO: -902.14026
+DEBUG:root:Epoch: 4 learning rate:0.00025ELBO: -691.3541
+DEBUG:root:Epoch: 4 learning rate:0.00025ELBO: -1371.523
+DEBUG:root:Epoch: 4 learning rate:0.00025ELBO: -169.90173
+DEBUG:root:Epoch: 4 learning rate:0.00025ELBO: -1365.1927
+DEBUG:root:Epoch: 4 learning rate:0.00025ELBO: -2963.5535
+DEBUG:root:Epoch: 4 learning rate:0.00025ELBO: -6162.0005
+DEBUG:root:Epoch: 4 learning rate:0.00025ELBO: -402.1804
+DEBUG:root:Epoch: 4 learning rate:0.00025ELBO: -1146.4846
+DEBUG:root:Epoch: 4completed
+DEBUG:root:************************ epoch:5*****************
+DEBUG:root:Epoch: 5 learning rate:0.000125ELBO: -4965.4365
+DEBUG:root:Epoch: 5 learning rate:0.000125ELBO: -458.59506
+DEBUG:root:Epoch: 5 learning rate:0.000125ELBO: -250.20987
+DEBUG:root:Epoch: 5 learning rate:0.000125ELBO: -424.85718
+DEBUG:root:Epoch: 5 learning rate:0.000125ELBO: -645.77313
+DEBUG:root:Epoch: 5 learning rate:0.000125ELBO: -1085.4569
+DEBUG:root:Epoch: 5 learning rate:0.000125ELBO: -1661.7554
+DEBUG:root:Epoch: 5 learning rate:0.000125ELBO: -1741.9218
+DEBUG:root:Epoch: 5 learning rate:0.000125ELBO: -657.2382
+DEBUG:root:Epoch: 5 learning rate:0.000125ELBO: -950.96704
+DEBUG:root:Epoch: 5 learning rate:0.000125ELBO: -1162.2802
+DEBUG:root:Epoch: 5 learning rate:0.000125ELBO: -4716.959
+DEBUG:root:Epoch: 5 learning rate:0.000125ELBO: -1158.8115
+DEBUG:root:Epoch: 5 learning rate:0.000125ELBO: -2237.295
+DEBUG:root:Epoch: 5 learning rate:0.000125ELBO: -490.6319
+DEBUG:root:Epoch: 5 learning rate:0.000125ELBO: -969.04395
+DEBUG:root:Epoch: 5 learning rate:0.000125ELBO: -1096.8442
+DEBUG:root:Epoch: 5completed
+DEBUG:root:************************ epoch:6*****************
+DEBUG:root:Epoch: 6 learning rate:0.000125ELBO: -3060.0073
+DEBUG:root:Epoch: 6 learning rate:0.000125ELBO: -174.71695
+DEBUG:root:Epoch: 6 learning rate:0.000125ELBO: -245.28465
+DEBUG:root:Epoch: 6 learning rate:0.000125ELBO: -1405.389
+DEBUG:root:Epoch: 6 learning rate:0.000125ELBO: -385.93317
+DEBUG:root:Epoch: 6 learning rate:0.000125ELBO: -5105.892
+DEBUG:root:Epoch: 6 learning rate:0.000125ELBO: -207.99207
+DEBUG:root:Epoch: 6 learning rate:0.000125ELBO: -690.04974
+DEBUG:root:Epoch: 6 learning rate:0.000125ELBO: -1309.9993
+DEBUG:root:Epoch: 6 learning rate:0.000125ELBO: -1120.182
+DEBUG:root:Epoch: 6 learning rate:0.000125ELBO: -477.60687
+DEBUG:root:Epoch: 6 learning rate:0.000125ELBO: -387.67117
+DEBUG:root:Epoch: 6 learning rate:0.000125ELBO: -1272.7285
+DEBUG:root:Epoch: 6 learning rate:0.000125ELBO: -1029.4978
+DEBUG:root:Epoch: 6 learning rate:0.000125ELBO: -884.9264
+DEBUG:root:Epoch: 6 learning rate:0.000125ELBO: -2237.4414
+DEBUG:root:Epoch: 6 learning rate:0.000125ELBO: -1633.0997
+DEBUG:root:Epoch: 6 learning rate:0.000125ELBO: -1278.835
+DEBUG:root:Epoch: 6completed
+DEBUG:root:************************ epoch:7*****************
+DEBUG:root:Epoch: 7 learning rate:6.25e-05ELBO: -476.94662
+DEBUG:root:Epoch: 7 learning rate:6.25e-05ELBO: -5875.5884
+DEBUG:root:Epoch: 7 learning rate:6.25e-05ELBO: -1400.6917
+DEBUG:root:Epoch: 7 learning rate:6.25e-05ELBO: -246.78833
+DEBUG:root:Epoch: 7 learning rate:6.25e-05ELBO: -2457.9187
+DEBUG:root:Epoch: 7 learning rate:6.25e-05ELBO: -2395.4875
+DEBUG:root:Epoch: 7 learning rate:6.25e-05ELBO: -667.9898
+DEBUG:root:Epoch: 7 learning rate:6.25e-05ELBO: -317.03192
+DEBUG:root:Epoch: 7 learning rate:6.25e-05ELBO: -1153.2789
+DEBUG:root:Epoch: 7 learning rate:6.25e-05ELBO: -863.3275
+DEBUG:root:Epoch: 7 learning rate:6.25e-05ELBO: -729.5978
+DEBUG:root:Epoch: 7 learning rate:6.25e-05ELBO: -1685.4374
+DEBUG:root:Epoch: 7 learning rate:6.25e-05ELBO: -642.3773
+DEBUG:root:Epoch: 7 learning rate:6.25e-05ELBO: -1886.3076
+DEBUG:root:Epoch: 7 learning rate:6.25e-05ELBO: -891.6592
+DEBUG:root:Epoch: 7 learning rate:6.25e-05ELBO: -1938.8834
+DEBUG:root:Epoch: 7 learning rate:6.25e-05ELBO: -594.89056
+DEBUG:root:Epoch: 7 learning rate:6.25e-05ELBO: -1727.7546
+DEBUG:root:Epoch: 7 learning rate:6.25e-05ELBO: -511.25922
+DEBUG:root:Epoch: 7 learning rate:6.25e-05ELBO: -216.51144
+DEBUG:root:Epoch: 7 learning rate:6.25e-05ELBO: -112.61952
+DEBUG:root:Epoch: 7 learning rate:6.25e-05ELBO: -836.426
+DEBUG:root:Epoch: 7 learning rate:6.25e-05ELBO: -2059.7861
+DEBUG:root:Epoch: 7 learning rate:6.25e-05ELBO: -1501.9233
+DEBUG:root:Epoch: 7completed
+DEBUG:root:************************ epoch:8*****************
+DEBUG:root:Epoch: 8 learning rate:6.25e-05ELBO: -1080.9082
+DEBUG:root:Epoch: 8 learning rate:6.25e-05ELBO: -270.02264
+DEBUG:root:Epoch: 8 learning rate:6.25e-05ELBO: -237.29828
+DEBUG:root:Epoch: 8 learning rate:6.25e-05ELBO: -1581.148
+DEBUG:root:Epoch: 8 learning rate:6.25e-05ELBO: -1682.1174
+DEBUG:root:Epoch: 8 learning rate:6.25e-05ELBO: -627.2876
+DEBUG:root:Epoch: 8 learning rate:6.25e-05ELBO: -139.06793
+DEBUG:root:Epoch: 8 learning rate:6.25e-05ELBO: -2641.7866
+DEBUG:root:Epoch: 8 learning rate:6.25e-05ELBO: -2383.6826
+DEBUG:root:Epoch: 8 learning rate:6.25e-05ELBO: -367.26187
+DEBUG:root:Epoch: 8 learning rate:6.25e-05ELBO: -92.272064
+DEBUG:root:Epoch: 8 learning rate:6.25e-05ELBO: -142.13094
+DEBUG:root:Epoch: 8 learning rate:6.25e-05ELBO: -4873.658
+DEBUG:root:Epoch: 8 learning rate:6.25e-05ELBO: -730.8331
+DEBUG:root:Epoch: 8 learning rate:6.25e-05ELBO: -3354.7014
+DEBUG:root:Epoch: 8 learning rate:6.25e-05ELBO: -626.05115
+DEBUG:root:Epoch: 8completed
+DEBUG:root:************************ epoch:9*****************
+DEBUG:root:Epoch: 9 learning rate:3.125e-05ELBO: -4270.227
+DEBUG:root:Epoch: 9 learning rate:3.125e-05ELBO: -1196.1741
+DEBUG:root:Epoch: 9 learning rate:3.125e-05ELBO: -1920.4565
+DEBUG:root:Epoch: 9 learning rate:3.125e-05ELBO: -545.6703
+DEBUG:root:Epoch: 9 learning rate:3.125e-05ELBO: -395.45563
+DEBUG:root:Epoch: 9 learning rate:3.125e-05ELBO: -1736.0159
+DEBUG:root:Epoch: 9 learning rate:3.125e-05ELBO: -272.0318
+DEBUG:root:Epoch: 9 learning rate:3.125e-05ELBO: -5315.0522
+DEBUG:root:Epoch: 9 learning rate:3.125e-05ELBO: -779.988
+DEBUG:root:Epoch: 9 learning rate:3.125e-05ELBO: -484.43192
+DEBUG:root:Epoch: 9 learning rate:3.125e-05ELBO: -1749.6648
+DEBUG:root:Epoch: 9 learning rate:3.125e-05ELBO: -328.35153
+DEBUG:root:Epoch: 9 learning rate:3.125e-05ELBO: -308.03152
+DEBUG:root:Epoch: 9 learning rate:3.125e-05ELBO: -1075.646
+DEBUG:root:Epoch: 9 learning rate:3.125e-05ELBO: -2963.9978
+DEBUG:root:Epoch: 9 learning rate:3.125e-05ELBO: -6192.1387
+DEBUG:root:Epoch: 9completed
+DEBUG:root:************************ epoch:10*****************
+DEBUG:root:Epoch: 10 learning rate:3.125e-05ELBO: -1319.8263
+DEBUG:root:Epoch: 10 learning rate:3.125e-05ELBO: -734.88306
+DEBUG:root:Epoch: 10 learning rate:3.125e-05ELBO: -243.22064
+DEBUG:root:Epoch: 10 learning rate:3.125e-05ELBO: -770.1076
+DEBUG:root:Epoch: 10 learning rate:3.125e-05ELBO: -626.61914
+DEBUG:root:Epoch: 10 learning rate:3.125e-05ELBO: -1040.918
+DEBUG:root:Epoch: 10 learning rate:3.125e-05ELBO: -439.1393
+DEBUG:root:Epoch: 10 learning rate:3.125e-05ELBO: -704.69366
+DEBUG:root:Epoch: 10 learning rate:3.125e-05ELBO: -1143.6067
+DEBUG:root:Epoch: 10 learning rate:3.125e-05ELBO: -1642.4175
+DEBUG:root:Epoch: 10 learning rate:3.125e-05ELBO: -2446.4866
+DEBUG:root:Epoch: 10 learning rate:3.125e-05ELBO: -2033.1824
+DEBUG:root:Epoch: 10 learning rate:3.125e-05ELBO: -1612.8281
+DEBUG:root:Epoch: 10 learning rate:3.125e-05ELBO: -2926.6355
+DEBUG:root:Epoch: 10 learning rate:3.125e-05ELBO: -1146.6641
+DEBUG:root:Epoch: 10 learning rate:3.125e-05ELBO: -504.54974
+DEBUG:root:Epoch: 10 learning rate:3.125e-05ELBO: -1081.8682
+DEBUG:root:Epoch: 10 learning rate:3.125e-05ELBO: -4877.167
+DEBUG:root:Epoch: 10 learning rate:3.125e-05ELBO: -178.5885
+DEBUG:root:Epoch: 10completed
+DEBUG:root:Epoch: 10 learning rate:3.125e-05ELBO: -253.73138
+DEBUG:root:Completed saving the model
+DEBUG:root:************************ epoch:11*****************
+DEBUG:root:Epoch: 11 learning rate:1.5625e-05ELBO: -2810.782
+DEBUG:root:Epoch: 11 learning rate:1.5625e-05ELBO: -2023.7382
+DEBUG:root:Epoch: 11 learning rate:1.5625e-05ELBO: -1555.9635
+DEBUG:root:Epoch: 11 learning rate:1.5625e-05ELBO: -627.3849
+DEBUG:root:Epoch: 11 learning rate:1.5625e-05ELBO: -779.24304
+DEBUG:root:Epoch: 11 learning rate:1.5625e-05ELBO: -666.3817
+DEBUG:root:Epoch: 11 learning rate:1.5625e-05ELBO: -937.96356
+DEBUG:root:Epoch: 11 learning rate:1.5625e-05ELBO: -507.47815
+DEBUG:root:Epoch: 11 learning rate:1.5625e-05ELBO: -685.40674
+DEBUG:root:Epoch: 11 learning rate:1.5625e-05ELBO: -202.07129
+DEBUG:root:Epoch: 11 learning rate:1.5625e-05ELBO: -1636.0304
+DEBUG:root:Epoch: 11 learning rate:1.5625e-05ELBO: -245.54729
+DEBUG:root:Epoch: 11 learning rate:1.5625e-05ELBO: -5941.1924
+DEBUG:root:Epoch: 11 learning rate:1.5625e-05ELBO: -3673.4658
+DEBUG:root:Epoch: 11 learning rate:1.5625e-05ELBO: -1232.7867
+DEBUG:root:Epoch: 11 learning rate:1.5625e-05ELBO: -1395.3629
+DEBUG:root:Epoch: 11 learning rate:1.5625e-05ELBO: -8555.003
+DEBUG:root:Epoch: 11 learning rate:1.5625e-05ELBO: -948.60034
+DEBUG:root:Epoch: 11 learning rate:1.5625e-05ELBO: -1924.5413
+DEBUG:root:Epoch: 11 learning rate:1.5625e-05ELBO: -875.9524
+DEBUG:root:Epoch: 11completed
+DEBUG:root:************************ epoch:12*****************
+DEBUG:root:Epoch: 12 learning rate:1.5625e-05ELBO: -2206.528
+DEBUG:root:Epoch: 12 learning rate:1.5625e-05ELBO: -403.1764
+DEBUG:root:Epoch: 12 learning rate:1.5625e-05ELBO: -952.4069
+DEBUG:root:Epoch: 12 learning rate:1.5625e-05ELBO: -1492.62
+DEBUG:root:Epoch: 12 learning rate:1.5625e-05ELBO: -1021.85406
+DEBUG:root:Epoch: 12 learning rate:1.5625e-05ELBO: -346.63074
+DEBUG:root:Epoch: 12 learning rate:1.5625e-05ELBO: -1158.674
+DEBUG:root:Epoch: 12 learning rate:1.5625e-05ELBO: -307.6392
+DEBUG:root:Epoch: 12 learning rate:1.5625e-05ELBO: -2306.648
+DEBUG:root:Epoch: 12 learning rate:1.5625e-05ELBO: -167.60167
+DEBUG:root:Epoch: 12 learning rate:1.5625e-05ELBO: -2796.2576
+DEBUG:root:Epoch: 12 learning rate:1.5625e-05ELBO: -7458.049
+DEBUG:root:Epoch: 12 learning rate:1.5625e-05ELBO: -393.0187
+DEBUG:root:Epoch: 12 learning rate:1.5625e-05ELBO: -980.65247
+DEBUG:root:Epoch: 12 learning rate:1.5625e-05ELBO: -223.94733
+DEBUG:root:Epoch: 12completed
+DEBUG:root:************************ epoch:13*****************
+DEBUG:root:Epoch: 13 learning rate:7.8125e-06ELBO: -1685.73
+DEBUG:root:Epoch: 13 learning rate:7.8125e-06ELBO: -448.6276
+DEBUG:root:Epoch: 13 learning rate:7.8125e-06ELBO: -169.59824
+DEBUG:root:Epoch: 13 learning rate:7.8125e-06ELBO: -861.8919
+DEBUG:root:Epoch: 13 learning rate:7.8125e-06ELBO: -347.94788
+DEBUG:root:Epoch: 13 learning rate:7.8125e-06ELBO: -2250.388
+DEBUG:root:Epoch: 13 learning rate:7.8125e-06ELBO: -5658.552
+DEBUG:root:Epoch: 13 learning rate:7.8125e-06ELBO: -998.3102
+DEBUG:root:Epoch: 13 learning rate:7.8125e-06ELBO: -1314.6571
+DEBUG:root:Epoch: 13 learning rate:7.8125e-06ELBO: -305.35507
+DEBUG:root:Epoch: 13 learning rate:7.8125e-06ELBO: -1796.7963
+DEBUG:root:Epoch: 13 learning rate:7.8125e-06ELBO: -136.57062
+DEBUG:root:Epoch: 13 learning rate:7.8125e-06ELBO: -1126.4155
+DEBUG:root:Epoch: 13 learning rate:7.8125e-06ELBO: -2854.8354
+DEBUG:root:Epoch: 13 learning rate:7.8125e-06ELBO: -1189.7235
+DEBUG:root:Epoch: 13 learning rate:7.8125e-06ELBO: -1004.99634
+DEBUG:root:Epoch: 13 learning rate:7.8125e-06ELBO: -1394.5754
+DEBUG:root:Epoch: 13 learning rate:7.8125e-06ELBO: -1760.994
+DEBUG:root:Epoch: 13 learning rate:7.8125e-06ELBO: -2379.7363
+DEBUG:root:Epoch: 13 learning rate:7.8125e-06ELBO: -378.9425
+DEBUG:root:Epoch: 13 learning rate:7.8125e-06ELBO: -1348.6055
+DEBUG:root:Epoch: 13 learning rate:7.8125e-06ELBO: -741.26025
+DEBUG:root:Epoch: 13 learning rate:7.8125e-06ELBO: -607.68646
+DEBUG:root:Epoch: 13 learning rate:7.8125e-06ELBO: -6829.2197
+DEBUG:root:Epoch: 13 learning rate:7.8125e-06ELBO: -1670.2037
+DEBUG:root:Epoch: 13 learning rate:7.8125e-06ELBO: -599.8034
+DEBUG:root:Epoch: 13 learning rate:7.8125e-06ELBO: -418.29114
+DEBUG:root:Epoch: 13 learning rate:7.8125e-06ELBO: -1750.7113
+DEBUG:root:Epoch: 13completed
+DEBUG:root:************************ epoch:14*****************
+DEBUG:root:Epoch: 14 learning rate:7.8125e-06ELBO: -4763.8525
+DEBUG:root:Epoch: 14 learning rate:7.8125e-06ELBO: -123.55877
+DEBUG:root:Epoch: 14 learning rate:7.8125e-06ELBO: -179.05722
+DEBUG:root:Epoch: 14 learning rate:7.8125e-06ELBO: -199.01344
+DEBUG:root:Epoch: 14 learning rate:7.8125e-06ELBO: -1796.0801
+DEBUG:root:Epoch: 14 learning rate:7.8125e-06ELBO: -577.02686
+DEBUG:root:Epoch: 14 learning rate:7.8125e-06ELBO: -960.9032
+DEBUG:root:Epoch: 14 learning rate:7.8125e-06ELBO: -1147.1257
+DEBUG:root:Epoch: 14 learning rate:7.8125e-06ELBO: -792.1439
+DEBUG:root:Epoch: 14 learning rate:7.8125e-06ELBO: -1496.0074
+DEBUG:root:Epoch: 14 learning rate:7.8125e-06ELBO: -736.5243
+DEBUG:root:Epoch: 14completed
+DEBUG:root:************************ epoch:15*****************
+DEBUG:root:Epoch: 15 learning rate:3.90625e-06ELBO: -1556.655
+DEBUG:root:Epoch: 15 learning rate:3.90625e-06ELBO: -1544.4587
+DEBUG:root:Epoch: 15 learning rate:3.90625e-06ELBO: -1557.3788
+DEBUG:root:Epoch: 15 learning rate:3.90625e-06ELBO: -139.64081
+DEBUG:root:Epoch: 15 learning rate:3.90625e-06ELBO: -4587.0127
+DEBUG:root:Epoch: 15 learning rate:3.90625e-06ELBO: -768.09515
+DEBUG:root:Epoch: 15 learning rate:3.90625e-06ELBO: -1260.8513
+DEBUG:root:Epoch: 15 learning rate:3.90625e-06ELBO: -684.6525
+DEBUG:root:Epoch: 15 learning rate:3.90625e-06ELBO: -3860.5215
+DEBUG:root:Epoch: 15 learning rate:3.90625e-06ELBO: -78.03101
+DEBUG:root:Epoch: 15 learning rate:3.90625e-06ELBO: -1835.337
+DEBUG:root:Epoch: 15 learning rate:3.90625e-06ELBO: -2846.9333
+DEBUG:root:Epoch: 15 learning rate:3.90625e-06ELBO: -1044.7588
+DEBUG:root:Epoch: 15 learning rate:3.90625e-06ELBO: -2879.3352
+DEBUG:root:Epoch: 15 learning rate:3.90625e-06ELBO: -213.18867
+DEBUG:root:Epoch: 15 learning rate:3.90625e-06ELBO: -3816.2715
+DEBUG:root:Epoch: 15 learning rate:3.90625e-06ELBO: -1306.9486
+DEBUG:root:Epoch: 15 learning rate:3.90625e-06ELBO: -719.4325
+DEBUG:root:Epoch: 15 learning rate:3.90625e-06ELBO: -286.8581
+DEBUG:root:Epoch: 15 learning rate:3.90625e-06ELBO: -2057.787
+DEBUG:root:Epoch: 15 learning rate:3.90625e-06ELBO: -98.94728
+DEBUG:root:Epoch: 15 learning rate:3.90625e-06ELBO: -1115.7688
+DEBUG:root:Epoch: 15 learning rate:3.90625e-06ELBO: -2077.618
+DEBUG:root:Epoch: 15 learning rate:3.90625e-06ELBO: -932.2929
+DEBUG:root:Epoch: 15 learning rate:3.90625e-06ELBO: -458.62732
+DEBUG:root:Epoch: 15 learning rate:3.90625e-06ELBO: -2942.066
+DEBUG:root:Epoch: 15completed
+DEBUG:root:************************ epoch:16*****************
+DEBUG:root:Epoch: 16 learning rate:3.90625e-06ELBO: -614.62427
+DEBUG:root:Epoch: 16 learning rate:3.90625e-06ELBO: -249.89212
+DEBUG:root:Epoch: 16 learning rate:3.90625e-06ELBO: -1036.8405
+DEBUG:root:Epoch: 16 learning rate:3.90625e-06ELBO: -2165.464
+DEBUG:root:Epoch: 16 learning rate:3.90625e-06ELBO: -1998.7666
+DEBUG:root:Epoch: 16 learning rate:3.90625e-06ELBO: -5634.1133
+DEBUG:root:Epoch: 16 learning rate:3.90625e-06ELBO: -827.41644
+DEBUG:root:Epoch: 16 learning rate:3.90625e-06ELBO: -1647.4904
+DEBUG:root:Epoch: 16 learning rate:3.90625e-06ELBO: -1762.952
+DEBUG:root:Epoch: 16 learning rate:3.90625e-06ELBO: -994.60614
+DEBUG:root:Epoch: 16 learning rate:3.90625e-06ELBO: -1147.0597
+DEBUG:root:Epoch: 16 learning rate:3.90625e-06ELBO: -330.7002
+DEBUG:root:Epoch: 16 learning rate:3.90625e-06ELBO: -800.47986
+DEBUG:root:Epoch: 16 learning rate:3.90625e-06ELBO: -1081.3938
+DEBUG:root:Epoch: 16 learning rate:3.90625e-06ELBO: -427.1319
+DEBUG:root:Epoch: 16 learning rate:3.90625e-06ELBO: -1807.2839
+DEBUG:root:Epoch: 16 learning rate:3.90625e-06ELBO: -817.93506
+DEBUG:root:Epoch: 16 learning rate:3.90625e-06ELBO: -513.59424
+DEBUG:root:Epoch: 16completed
+DEBUG:root:************************ epoch:17*****************
+DEBUG:root:Epoch: 17 learning rate:1.953125e-06ELBO: -196.11388
+DEBUG:root:Epoch: 17 learning rate:1.953125e-06ELBO: -1691.2163
+DEBUG:root:Epoch: 17 learning rate:1.953125e-06ELBO: -1607.4235
+DEBUG:root:Epoch: 17 learning rate:1.953125e-06ELBO: -801.72034
+DEBUG:root:Epoch: 17 learning rate:1.953125e-06ELBO: -916.6123
+DEBUG:root:Epoch: 17 learning rate:1.953125e-06ELBO: -1620.564
+DEBUG:root:Epoch: 17 learning rate:1.953125e-06ELBO: -490.88196
+DEBUG:root:Epoch: 17 learning rate:1.953125e-06ELBO: -1248.9043
+DEBUG:root:Epoch: 17 learning rate:1.953125e-06ELBO: -562.5079
+DEBUG:root:Epoch: 17 learning rate:1.953125e-06ELBO: -1449.4961
+DEBUG:root:Epoch: 17 learning rate:1.953125e-06ELBO: -554.7778
+DEBUG:root:Epoch: 17 learning rate:1.953125e-06ELBO: -423.8952
+DEBUG:root:Epoch: 17 learning rate:1.953125e-06ELBO: -1641.6302
+DEBUG:root:Epoch: 17 learning rate:1.953125e-06ELBO: -283.29822
+DEBUG:root:Epoch: 17 learning rate:1.953125e-06ELBO: -276.34598
+DEBUG:root:Epoch: 17 learning rate:1.953125e-06ELBO: -1230.9519
+DEBUG:root:Epoch: 17 learning rate:1.953125e-06ELBO: -3581.7644
+DEBUG:root:Epoch: 17 learning rate:1.953125e-06ELBO: -5970.547
+DEBUG:root:Epoch: 17completed
+DEBUG:root:************************ epoch:18*****************
+DEBUG:root:Epoch: 18 learning rate:1.953125e-06ELBO: -945.6249
+DEBUG:root:Epoch: 18 learning rate:1.953125e-06ELBO: -245.5428
+DEBUG:root:Epoch: 18 learning rate:1.953125e-06ELBO: -1074.6406
+DEBUG:root:Epoch: 18 learning rate:1.953125e-06ELBO: -1393.164
+DEBUG:root:Epoch: 18 learning rate:1.953125e-06ELBO: -2187.2366
+DEBUG:root:Epoch: 18 learning rate:1.953125e-06ELBO: -193.51991
+DEBUG:root:Epoch: 18 learning rate:1.953125e-06ELBO: -2299.008
+DEBUG:root:Epoch: 18 learning rate:1.953125e-06ELBO: -1796.8986
+DEBUG:root:Epoch: 18 learning rate:1.953125e-06ELBO: -2582.8677
+DEBUG:root:Epoch: 18 learning rate:1.953125e-06ELBO: -1320.6721
+DEBUG:root:Epoch: 18 learning rate:1.953125e-06ELBO: -4438.3916
+DEBUG:root:Epoch: 18 learning rate:1.953125e-06ELBO: -528.1169
+DEBUG:root:Epoch: 18 learning rate:1.953125e-06ELBO: -1868.4834
+DEBUG:root:Epoch: 18 learning rate:1.953125e-06ELBO: -764.49713
+DEBUG:root:Epoch: 18 learning rate:1.953125e-06ELBO: -1314.6453
+DEBUG:root:Epoch: 18 learning rate:1.953125e-06ELBO: -1578.2489
+DEBUG:root:Epoch: 18 learning rate:1.953125e-06ELBO: -4393.3857
+DEBUG:root:Epoch: 18completed
+DEBUG:root:************************ epoch:19*****************
+DEBUG:root:Epoch: 19 learning rate:9.765625e-07ELBO: -482.49203
+DEBUG:root:Epoch: 19 learning rate:9.765625e-07ELBO: -823.0538
+DEBUG:root:Epoch: 19 learning rate:9.765625e-07ELBO: -1353.0778
+DEBUG:root:Epoch: 19 learning rate:9.765625e-07ELBO: -729.1543
+DEBUG:root:Epoch: 19 learning rate:9.765625e-07ELBO: -1912.3378
+DEBUG:root:Epoch: 19 learning rate:9.765625e-07ELBO: -334.73953
+DEBUG:root:Epoch: 19 learning rate:9.765625e-07ELBO: -2091.5913
+DEBUG:root:Epoch: 19 learning rate:9.765625e-07ELBO: -707.1547
+DEBUG:root:Epoch: 19 learning rate:9.765625e-07ELBO: -2063.1045
+DEBUG:root:Epoch: 19 learning rate:9.765625e-07ELBO: -6511.457
+DEBUG:root:Epoch: 19 learning rate:9.765625e-07ELBO: -504.74573
+DEBUG:root:Epoch: 19 learning rate:9.765625e-07ELBO: -450.9194
+DEBUG:root:Epoch: 19 learning rate:9.765625e-07ELBO: -502.9223
+DEBUG:root:Epoch: 19 learning rate:9.765625e-07ELBO: -555.10876
+DEBUG:root:Epoch: 19 learning rate:9.765625e-07ELBO: -6288.939
+DEBUG:root:Epoch: 19 learning rate:9.765625e-07ELBO: -4487.4893
+DEBUG:root:Epoch: 19 learning rate:9.765625e-07ELBO: -1333.346
+DEBUG:root:Epoch: 19 learning rate:9.765625e-07ELBO: -1174.2297
+DEBUG:root:Epoch: 19 learning rate:9.765625e-07ELBO: -388.23517
+DEBUG:root:Epoch: 19 learning rate:9.765625e-07ELBO: -3856.3755
+DEBUG:root:Epoch: 19 learning rate:9.765625e-07ELBO: -1249.6953
+DEBUG:root:Epoch: 19 learning rate:9.765625e-07ELBO: -644.8232
+DEBUG:root:Epoch: 19completed
+DEBUG:root:************************ epoch:20*****************
+DEBUG:root:Epoch: 20 learning rate:9.765625e-07ELBO: -4202.6553
+DEBUG:root:Epoch: 20 learning rate:9.765625e-07ELBO: -449.52536
+DEBUG:root:Epoch: 20 learning rate:9.765625e-07ELBO: -1165.2744
+DEBUG:root:Epoch: 20 learning rate:9.765625e-07ELBO: -114.96718
+DEBUG:root:Epoch: 20 learning rate:9.765625e-07ELBO: -1741.8436
+DEBUG:root:Epoch: 20 learning rate:9.765625e-07ELBO: -205.14742
+DEBUG:root:Epoch: 20 learning rate:9.765625e-07ELBO: -6579.3457
+DEBUG:root:Epoch: 20 learning rate:9.765625e-07ELBO: -474.1865
+DEBUG:root:Epoch: 20 learning rate:9.765625e-07ELBO: -246.67795
+DEBUG:root:Epoch: 20 learning rate:9.765625e-07ELBO: -362.93723
+DEBUG:root:Epoch: 20 learning rate:9.765625e-07ELBO: -1051.618
+DEBUG:root:Epoch: 20 learning rate:9.765625e-07ELBO: -4834.276
+DEBUG:root:Epoch: 20 learning rate:9.765625e-07ELBO: -446.46597
+DEBUG:root:Epoch: 20 learning rate:9.765625e-07ELBO: -835.40076
+DEBUG:root:Epoch: 20 learning rate:9.765625e-07ELBO: -1854.1613
+DEBUG:root:Epoch: 20 learning rate:9.765625e-07ELBO: -1843.0203
+DEBUG:root:Epoch: 20 learning rate:9.765625e-07ELBO: -287.3593
+DEBUG:root:Epoch: 20completed
+DEBUG:root:Epoch: 20 learning rate:9.765625e-07ELBO: -292.81146
+DEBUG:root:Completed saving the model
+DEBUG:root:************************ epoch:21*****************
+DEBUG:root:Epoch: 21 learning rate:4.8828125e-07ELBO: -84.74975
+DEBUG:root:Epoch: 21 learning rate:4.8828125e-07ELBO: -1977.0626
+DEBUG:root:Epoch: 21 learning rate:4.8828125e-07ELBO: -3364.9424
+DEBUG:root:Epoch: 21 learning rate:4.8828125e-07ELBO: -474.8118
+DEBUG:root:Epoch: 21 learning rate:4.8828125e-07ELBO: -876.44977
+DEBUG:root:Epoch: 21 learning rate:4.8828125e-07ELBO: -1424.4836
+DEBUG:root:Epoch: 21 learning rate:4.8828125e-07ELBO: -4513.9517
+DEBUG:root:Epoch: 21 learning rate:4.8828125e-07ELBO: -4021.501
+DEBUG:root:Epoch: 21 learning rate:4.8828125e-07ELBO: -3584.389
+DEBUG:root:Epoch: 21 learning rate:4.8828125e-07ELBO: -1162.177
+DEBUG:root:Epoch: 21 learning rate:4.8828125e-07ELBO: -1133.4554
+DEBUG:root:Epoch: 21completed
+DEBUG:root:************************ epoch:22*****************
+DEBUG:root:Epoch: 22 learning rate:4.8828125e-07ELBO: -438.145
+DEBUG:root:Epoch: 22 learning rate:4.8828125e-07ELBO: -2735.213
+DEBUG:root:Epoch: 22 learning rate:4.8828125e-07ELBO: -616.56274
+DEBUG:root:Epoch: 22 learning rate:4.8828125e-07ELBO: -1487.0541
+DEBUG:root:Epoch: 22 learning rate:4.8828125e-07ELBO: -603.16034
+DEBUG:root:Epoch: 22 learning rate:4.8828125e-07ELBO: -494.69168
+DEBUG:root:Epoch: 22 learning rate:4.8828125e-07ELBO: -2653.8574
+DEBUG:root:Epoch: 22 learning rate:4.8828125e-07ELBO: -490.3817
+DEBUG:root:Epoch: 22 learning rate:4.8828125e-07ELBO: -176.48853
+DEBUG:root:Epoch: 22 learning rate:4.8828125e-07ELBO: -2537.3105
+DEBUG:root:Epoch: 22 learning rate:4.8828125e-07ELBO: -2043.7657
+DEBUG:root:Epoch: 22 learning rate:4.8828125e-07ELBO: -193.35806
+DEBUG:root:Epoch: 22 learning rate:4.8828125e-07ELBO: -558.2324
+DEBUG:root:Epoch: 22 learning rate:4.8828125e-07ELBO: -1025.5328
+DEBUG:root:Epoch: 22completed
+DEBUG:root:************************ epoch:23*****************
+DEBUG:root:Epoch: 23 learning rate:2.44140625e-07ELBO: -764.79126
+DEBUG:root:Epoch: 23 learning rate:2.44140625e-07ELBO: -264.2513
+DEBUG:root:Epoch: 23 learning rate:2.44140625e-07ELBO: -797.0537
+DEBUG:root:Epoch: 23 learning rate:2.44140625e-07ELBO: -944.3451
+DEBUG:root:Epoch: 23 learning rate:2.44140625e-07ELBO: -945.2212
+DEBUG:root:Epoch: 23 learning rate:2.44140625e-07ELBO: -903.6868
+DEBUG:root:Epoch: 23 learning rate:2.44140625e-07ELBO: -2059.4353
+DEBUG:root:Epoch: 23 learning rate:2.44140625e-07ELBO: -1672.8123
+DEBUG:root:Epoch: 23 learning rate:2.44140625e-07ELBO: -88.40162
+DEBUG:root:Epoch: 23 learning rate:2.44140625e-07ELBO: -5122.818
+DEBUG:root:Epoch: 23 learning rate:2.44140625e-07ELBO: -5009.7085
+DEBUG:root:Epoch: 23 learning rate:2.44140625e-07ELBO: -3329.2395
+DEBUG:root:Epoch: 23 learning rate:2.44140625e-07ELBO: -2864.7534
+DEBUG:root:Epoch: 23 learning rate:2.44140625e-07ELBO: -989.9922
+DEBUG:root:Epoch: 23 learning rate:2.44140625e-07ELBO: -302.76306
+DEBUG:root:Epoch: 23 learning rate:2.44140625e-07ELBO: -953.1339
+DEBUG:root:Epoch: 23 learning rate:2.44140625e-07ELBO: -453.3864
+DEBUG:root:Epoch: 23 learning rate:2.44140625e-07ELBO: -342.29956
+DEBUG:root:Epoch: 23 learning rate:2.44140625e-07ELBO: -1879.3453
+DEBUG:root:Epoch: 23 learning rate:2.44140625e-07ELBO: -544.8353
+DEBUG:root:Epoch: 23 learning rate:2.44140625e-07ELBO: -561.15607
+DEBUG:root:Epoch: 23 learning rate:2.44140625e-07ELBO: -841.48883
+DEBUG:root:Epoch: 23 learning rate:2.44140625e-07ELBO: -529.5047
+DEBUG:root:Epoch: 23 learning rate:2.44140625e-07ELBO: -1633.7876
+DEBUG:root:Epoch: 23 learning rate:2.44140625e-07ELBO: -1841.2942
+DEBUG:root:Epoch: 23completed
+DEBUG:root:************************ epoch:24*****************
+DEBUG:root:Epoch: 24 learning rate:2.44140625e-07ELBO: -2390.877
+DEBUG:root:Epoch: 24 learning rate:2.44140625e-07ELBO: -742.54346
+DEBUG:root:Epoch: 24 learning rate:2.44140625e-07ELBO: -680.6381
+DEBUG:root:Epoch: 24 learning rate:2.44140625e-07ELBO: -983.4047
+DEBUG:root:Epoch: 24 learning rate:2.44140625e-07ELBO: -1956.4043
+DEBUG:root:Epoch: 24 learning rate:2.44140625e-07ELBO: -1798.0284
+DEBUG:root:Epoch: 24 learning rate:2.44140625e-07ELBO: -889.6496
+DEBUG:root:Epoch: 24 learning rate:2.44140625e-07ELBO: -321.35724
+DEBUG:root:Epoch: 24 learning rate:2.44140625e-07ELBO: -744.4302
+DEBUG:root:Epoch: 24 learning rate:2.44140625e-07ELBO: -331.6864
+DEBUG:root:Epoch: 24 learning rate:2.44140625e-07ELBO: -2472.7412
+DEBUG:root:Epoch: 24 learning rate:2.44140625e-07ELBO: -849.35144
+DEBUG:root:Epoch: 24 learning rate:2.44140625e-07ELBO: -3530.6091
+DEBUG:root:Epoch: 24 learning rate:2.44140625e-07ELBO: -1775.4366
+DEBUG:root:Epoch: 24 learning rate:2.44140625e-07ELBO: -1015.7095
+DEBUG:root:Epoch: 24 learning rate:2.44140625e-07ELBO: -2378.395
+DEBUG:root:Epoch: 24 learning rate:2.44140625e-07ELBO: -2604.6074
+DEBUG:root:Epoch: 24 learning rate:2.44140625e-07ELBO: -1088.4388
+DEBUG:root:Epoch: 24 learning rate:2.44140625e-07ELBO: -357.0441
+DEBUG:root:Epoch: 24 learning rate:2.44140625e-07ELBO: -5062.1343
+DEBUG:root:Epoch: 24 learning rate:2.44140625e-07ELBO: -3016.9023
+DEBUG:root:Epoch: 24 learning rate:2.44140625e-07ELBO: -1293.8523
+DEBUG:root:Epoch: 24 learning rate:2.44140625e-07ELBO: -195.00293
+DEBUG:root:Epoch: 24 learning rate:2.44140625e-07ELBO: -4731.9565
+DEBUG:root:Epoch: 24completed
+DEBUG:root:Training completed .... Saving model
+DEBUG:root:Completed saving the model
+WARNING:tensorflow:From /home/jehill/anaconda3/lib/python3.6/site-packages/tensorflow/python/training/saver.py:1266: checkpoint_exists (from tensorflow.python.training.checkpoint_management) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use standard file APIs to check for files with this prefix.
+INFO:tensorflow:Restoring parameters from ./trained_models/CVAE/final_model/CVAE
+WARNING:tensorflow:From /home/jehill/anaconda3/lib/python3.6/site-packages/tensorflow/python/ops/resource_variable_ops.py:435: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+DEBUG:root:Completed creating the model
+WARNING:tensorflow:From /home/jehill/anaconda3/lib/python3.6/site-packages/tensorflow/python/training/saver.py:1266: checkpoint_exists (from tensorflow.python.training.checkpoint_management) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use standard file APIs to check for files with this prefix.
+INFO:tensorflow:Restoring parameters from ./trained_models/CVAE/final_model/CVAE
+WARNING:tensorflow:From /home/jehill/anaconda3/lib/python3.6/site-packages/tensorflow/python/ops/resource_variable_ops.py:435: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+DEBUG:root:Completed creating the model
+WARNING:tensorflow:From /home/jehill/anaconda3/lib/python3.6/site-packages/tensorflow/python/training/saver.py:1266: checkpoint_exists (from tensorflow.python.training.checkpoint_management) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use standard file APIs to check for files with this prefix.
+INFO:tensorflow:Restoring parameters from ./trained_models/CVAE/final_model/CVAE
+WARNING:tensorflow:From /home/jehill/anaconda3/lib/python3.6/site-packages/tensorflow/python/ops/resource_variable_ops.py:435: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+DEBUG:root:Completed creating the model
+WARNING:tensorflow:From /home/jehill/anaconda3/lib/python3.6/site-packages/tensorflow/python/training/saver.py:1266: checkpoint_exists (from tensorflow.python.training.checkpoint_management) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use standard file APIs to check for files with this prefix.
+INFO:tensorflow:Restoring parameters from ./trained_models/CVAE/final_model/CVAE
+WARNING:tensorflow:From /home/jehill/anaconda3/lib/python3.6/site-packages/tensorflow/python/ops/resource_variable_ops.py:435: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+DEBUG:root:Completed creating the model
+WARNING:tensorflow:From /home/jehill/anaconda3/lib/python3.6/site-packages/tensorflow/python/training/saver.py:1266: checkpoint_exists (from tensorflow.python.training.checkpoint_management) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use standard file APIs to check for files with this prefix.
+INFO:tensorflow:Restoring parameters from ./trained_models/CVAE/final_model/CVAE
+WARNING:tensorflow:From /home/jehill/anaconda3/lib/python3.6/site-packages/tensorflow/python/ops/resource_variable_ops.py:435: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+DEBUG:root:Completed creating the model
+WARNING:tensorflow:From /home/jehill/anaconda3/lib/python3.6/site-packages/tensorflow/python/training/saver.py:1266: checkpoint_exists (from tensorflow.python.training.checkpoint_management) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use standard file APIs to check for files with this prefix.
+INFO:tensorflow:Restoring parameters from ./trained_models/CVAE/final_model/CVAE
+WARNING:tensorflow:From /home/jehill/anaconda3/lib/python3.6/site-packages/tensorflow/python/ops/resource_variable_ops.py:435: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+DEBUG:root:Completed creating the model
+WARNING:tensorflow:From /home/jehill/anaconda3/lib/python3.6/site-packages/tensorflow/python/training/saver.py:1266: checkpoint_exists (from tensorflow.python.training.checkpoint_management) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use standard file APIs to check for files with this prefix.
+INFO:tensorflow:Restoring parameters from ./trained_models/CVAE/final_model/CVAE
+WARNING:tensorflow:From /home/jehill/anaconda3/lib/python3.6/site-packages/tensorflow/python/ops/resource_variable_ops.py:435: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+DEBUG:root:Completed creating the model
+WARNING:tensorflow:From /home/jehill/anaconda3/lib/python3.6/site-packages/tensorflow/python/training/saver.py:1266: checkpoint_exists (from tensorflow.python.training.checkpoint_management) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use standard file APIs to check for files with this prefix.
+INFO:tensorflow:Restoring parameters from ./trained_models/CVAE/final_model/CVAE
+WARNING:tensorflow:From /home/jehill/anaconda3/lib/python3.6/site-packages/tensorflow/python/ops/resource_variable_ops.py:435: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+DEBUG:root:Completed creating the model
+WARNING:tensorflow:From /home/jehill/anaconda3/lib/python3.6/site-packages/tensorflow/python/training/saver.py:1266: checkpoint_exists (from tensorflow.python.training.checkpoint_management) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use standard file APIs to check for files with this prefix.
+INFO:tensorflow:Restoring parameters from ./trained_models/CVAE/final_model/CVAE
+WARNING:tensorflow:From /home/jehill/anaconda3/lib/python3.6/site-packages/tensorflow/python/ops/resource_variable_ops.py:435: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+DEBUG:root:Completed creating the model
+WARNING:tensorflow:From /home/jehill/anaconda3/lib/python3.6/site-packages/tensorflow/python/training/saver.py:1266: checkpoint_exists (from tensorflow.python.training.checkpoint_management) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use standard file APIs to check for files with this prefix.
+INFO:tensorflow:Restoring parameters from ./trained_models/CVAE/final_model/CVAE
+WARNING:tensorflow:From /home/jehill/anaconda3/lib/python3.6/site-packages/tensorflow/python/ops/resource_variable_ops.py:435: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+DEBUG:root:Completed creating the model
+WARNING:tensorflow:From /home/jehill/anaconda3/lib/python3.6/site-packages/tensorflow/python/training/saver.py:1266: checkpoint_exists (from tensorflow.python.training.checkpoint_management) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use standard file APIs to check for files with this prefix.
+INFO:tensorflow:Restoring parameters from ./trained_models/CVAE/final_model/CVAE
+WARNING:tensorflow:From /home/jehill/anaconda3/lib/python3.6/site-packages/tensorflow/python/ops/resource_variable_ops.py:435: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+DEBUG:root:Completed creating the model
+WARNING:tensorflow:From /home/jehill/anaconda3/lib/python3.6/site-packages/tensorflow/python/training/saver.py:1266: checkpoint_exists (from tensorflow.python.training.checkpoint_management) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use standard file APIs to check for files with this prefix.
+INFO:tensorflow:Restoring parameters from ./trained_models/CVAE/final_model/CVAE
+WARNING:tensorflow:From /home/jehill/anaconda3/lib/python3.6/site-packages/tensorflow/python/ops/resource_variable_ops.py:435: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+DEBUG:root:Completed creating the model
+WARNING:tensorflow:From /home/jehill/anaconda3/lib/python3.6/site-packages/tensorflow/python/training/saver.py:1266: checkpoint_exists (from tensorflow.python.training.checkpoint_management) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use standard file APIs to check for files with this prefix.
+INFO:tensorflow:Restoring parameters from ./trained_models/CVAE/final_model/CVAE
+WARNING:tensorflow:From /home/jehill/anaconda3/lib/python3.6/site-packages/tensorflow/python/ops/resource_variable_ops.py:435: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+DEBUG:root:Completed creating the model
+WARNING:tensorflow:From /home/jehill/anaconda3/lib/python3.6/site-packages/tensorflow/python/training/saver.py:1266: checkpoint_exists (from tensorflow.python.training.checkpoint_management) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use standard file APIs to check for files with this prefix.
+INFO:tensorflow:Restoring parameters from ./trained_models/CVAE/final_model/CVAE
+WARNING:tensorflow:From /home/jehill/anaconda3/lib/python3.6/site-packages/tensorflow/python/ops/resource_variable_ops.py:435: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+DEBUG:root:Completed creating the model
+WARNING:tensorflow:From /home/jehill/anaconda3/lib/python3.6/site-packages/tensorflow/python/training/saver.py:1266: checkpoint_exists (from tensorflow.python.training.checkpoint_management) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use standard file APIs to check for files with this prefix.
+INFO:tensorflow:Restoring parameters from ./trained_models/CVAE/final_model/CVAE
+WARNING:tensorflow:From /home/jehill/anaconda3/lib/python3.6/site-packages/tensorflow/python/ops/resource_variable_ops.py:435: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+DEBUG:root:Completed creating the model
+WARNING:tensorflow:From /home/jehill/anaconda3/lib/python3.6/site-packages/tensorflow/python/training/saver.py:1266: checkpoint_exists (from tensorflow.python.training.checkpoint_management) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use standard file APIs to check for files with this prefix.
+INFO:tensorflow:Restoring parameters from ./trained_models/CVAE/final_model/CVAE
+WARNING:tensorflow:From /home/jehill/anaconda3/lib/python3.6/site-packages/tensorflow/python/ops/resource_variable_ops.py:435: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+DEBUG:root:Completed creating the model
+WARNING:tensorflow:From /home/jehill/anaconda3/lib/python3.6/site-packages/tensorflow/python/training/saver.py:1266: checkpoint_exists (from tensorflow.python.training.checkpoint_management) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use standard file APIs to check for files with this prefix.
+INFO:tensorflow:Restoring parameters from ./trained_models/CVAE/final_model/CVAE
+WARNING:tensorflow:From /home/jehill/anaconda3/lib/python3.6/site-packages/tensorflow/python/ops/resource_variable_ops.py:435: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+DEBUG:root:Completed creating the model
+WARNING:tensorflow:From /home/jehill/anaconda3/lib/python3.6/site-packages/tensorflow/python/training/saver.py:1266: checkpoint_exists (from tensorflow.python.training.checkpoint_management) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use standard file APIs to check for files with this prefix.
+INFO:tensorflow:Restoring parameters from ./trained_models/CVAE/final_model/CVAE
+WARNING:tensorflow:From /home/jehill/anaconda3/lib/python3.6/site-packages/tensorflow/python/ops/resource_variable_ops.py:435: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+DEBUG:root:Completed creating the model
+WARNING:tensorflow:From /home/jehill/anaconda3/lib/python3.6/site-packages/tensorflow/python/training/saver.py:1266: checkpoint_exists (from tensorflow.python.training.checkpoint_management) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use standard file APIs to check for files with this prefix.
+INFO:tensorflow:Restoring parameters from ./trained_models/CVAE/final_model/CVAE
+WARNING:tensorflow:From /home/jehill/anaconda3/lib/python3.6/site-packages/tensorflow/python/ops/resource_variable_ops.py:435: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+DEBUG:root:Completed creating the model
+WARNING:tensorflow:From /home/jehill/anaconda3/lib/python3.6/site-packages/tensorflow/python/training/saver.py:1266: checkpoint_exists (from tensorflow.python.training.checkpoint_management) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use standard file APIs to check for files with this prefix.
+INFO:tensorflow:Restoring parameters from ./trained_models/CVAE/final_model/CVAE
+WARNING:tensorflow:From /home/jehill/anaconda3/lib/python3.6/site-packages/tensorflow/python/ops/resource_variable_ops.py:435: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+DEBUG:root:Completed creating the model
+WARNING:tensorflow:From /home/jehill/anaconda3/lib/python3.6/site-packages/tensorflow/python/training/saver.py:1266: checkpoint_exists (from tensorflow.python.training.checkpoint_management) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use standard file APIs to check for files with this prefix.
+INFO:tensorflow:Restoring parameters from ./trained_models/CVAE/final_model/CVAE
+WARNING:tensorflow:From /home/jehill/anaconda3/lib/python3.6/site-packages/tensorflow/python/ops/resource_variable_ops.py:435: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+DEBUG:root:Completed creating the model
+WARNING:tensorflow:From /home/jehill/anaconda3/lib/python3.6/site-packages/tensorflow/python/training/saver.py:1266: checkpoint_exists (from tensorflow.python.training.checkpoint_management) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use standard file APIs to check for files with this prefix.
+INFO:tensorflow:Restoring parameters from ./trained_models/CVAE/final_model/CVAE
+WARNING:tensorflow:From /home/jehill/anaconda3/lib/python3.6/site-packages/tensorflow/python/ops/resource_variable_ops.py:435: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+DEBUG:root:Completed creating the model
+WARNING:tensorflow:From /home/jehill/anaconda3/lib/python3.6/site-packages/tensorflow/python/training/saver.py:1266: checkpoint_exists (from tensorflow.python.training.checkpoint_management) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use standard file APIs to check for files with this prefix.
+INFO:tensorflow:Restoring parameters from ./trained_models/CVAE/final_model/CVAE
+WARNING:tensorflow:From /home/jehill/anaconda3/lib/python3.6/site-packages/tensorflow/python/ops/resource_variable_ops.py:435: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+DEBUG:root:Completed creating the model
+WARNING:tensorflow:From /home/jehill/anaconda3/lib/python3.6/site-packages/tensorflow/python/training/saver.py:1266: checkpoint_exists (from tensorflow.python.training.checkpoint_management) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use standard file APIs to check for files with this prefix.
+INFO:tensorflow:Restoring parameters from ./trained_models/CVAE/final_model/CVAE
+WARNING:tensorflow:From /home/jehill/anaconda3/lib/python3.6/site-packages/tensorflow/python/ops/resource_variable_ops.py:435: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+DEBUG:root:Completed creating the model
+WARNING:tensorflow:From /home/jehill/anaconda3/lib/python3.6/site-packages/tensorflow/python/training/saver.py:1266: checkpoint_exists (from tensorflow.python.training.checkpoint_management) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use standard file APIs to check for files with this prefix.
+INFO:tensorflow:Restoring parameters from ./trained_models/CVAE/final_model/CVAE
+WARNING:tensorflow:From /home/jehill/anaconda3/lib/python3.6/site-packages/tensorflow/python/ops/resource_variable_ops.py:435: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+DEBUG:root:Completed creating the model
+WARNING:tensorflow:From /home/jehill/anaconda3/lib/python3.6/site-packages/tensorflow/python/training/saver.py:1266: checkpoint_exists (from tensorflow.python.training.checkpoint_management) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use standard file APIs to check for files with this prefix.
+INFO:tensorflow:Restoring parameters from ./trained_models/CVAE/final_model/CVAE
+INFO:tensorflow:Restoring parameters from ./trained_models/CVAE/final_model/CVAE
+INFO:tensorflow:Restoring parameters from ./trained_models/CVAE/final_model/CVAE
+INFO:tensorflow:Restoring parameters from ./trained_models/CVAE/final_model/CVAE
+INFO:tensorflow:Restoring parameters from ./trained_models/CVAE/final_model/CVAE
+INFO:tensorflow:Restoring parameters from ./trained_models/CVAE/final_model/CVAE
+INFO:tensorflow:Restoring parameters from ./trained_models/CVAE/final_model/CVAE
+INFO:tensorflow:Restoring parameters from ./trained_models/CVAE/final_model/CVAE
+WARNING:tensorflow:From /home/jehill/anaconda3/lib/python3.6/site-packages/tensorflow/python/ops/resource_variable_ops.py:435: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+DEBUG:root:Completed creating the model
+WARNING:tensorflow:From /home/jehill/anaconda3/lib/python3.6/site-packages/tensorflow/python/training/saver.py:1266: checkpoint_exists (from tensorflow.python.training.checkpoint_management) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use standard file APIs to check for files with this prefix.
+INFO:tensorflow:Restoring parameters from ./trained_models/CVAE/final_model/CVAE
