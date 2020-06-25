@@ -1,8 +1,8 @@
 import h5py
 import numpy as np
 import pathlib
-from   utils.subsample import MaskFunc
-import utils.transforms as T
+from   subsample import MaskFunc
+import transforms as T
 
 # a number of utility functions to read and transform the data
 
