@@ -10,12 +10,9 @@ import subprocess
 import sys
 
 import pickle
-import random
-
-from pympler.tracker import SummaryTracker  #TODO install this
 
 from world_model import make_model, simulate
-from utils.es import CMAES, SimpleGA, OpenES, PEPG
+from models.utils.es import CMAES, SimpleGA, OpenES, PEPG
 import argparse
 import time
 
