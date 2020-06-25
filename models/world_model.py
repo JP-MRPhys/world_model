@@ -87,7 +87,7 @@ class Model:
     def make_env(self, env_name, seed=-1, render_mode=False, model=None):
         self.render_mode = render_mode
         self.env_name = env_name
-        self.env = fastMRIEnviroment()
+        self.env = fastMRIEnviroment(datadir=FASTMRI_DATADIR)
 
     def get_action(self, x, t=0, add_noise=False):
         # if add_noise = True, ignore sampling.
@@ -303,6 +303,7 @@ def main(args):
 
 if __name__ == "__main__":
 
+
     parser = argparse.ArgumentParser(description=('View a trained agent'))
     parser.add_argument('env_name', type=str,  help='car_racing etc - this is only used for labelling files etc, the actual environments are defined in train_envs in config.py')
     parser.add_argument('--filename', type=str, default='', help='Path to the trained model json file')
@@ -313,7 +314,5 @@ if __name__ == "__main__":
     parser.add_argument('--render_mode', action='store_true', help='render the run')
     parser.add_argument('--record_video', action='store_true', help='record the run to ./videos')
     parser.add_argument('--max_length', type=int, default=-1, help='max_length of an episode')
-
     args = parser.parse_args()
-
     main(args)
