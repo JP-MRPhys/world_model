@@ -1,7 +1,7 @@
 import h5py
 import numpy as np
 import pathlib
-from world_model,utils.subsample import MaskFunc
+from   utils.subsample import MaskFunc
 import utils.transforms as T
 
 # a number of utility functions to read and transform the data
