@@ -16,7 +16,7 @@ from utils.es import CMAES, SimpleGA, OpenES, PEPG
 import argparse
 import time
 
-import config
+#import config
 
 ### ES related code - parameters are just dummy values so do not edit here. Instead, set in the args to the script.
 num_episode = 1
