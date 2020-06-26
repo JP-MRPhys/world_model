@@ -39,7 +39,7 @@ def make_model():
 class Model:
     def __init__(self, controller, vae, rnn):
 
-        self.input_size = (256,256,1)  #vae.input_dim
+        self.input_size =  vae.input_dim
         self.vae = vae
         self.rnn = rnn
 
