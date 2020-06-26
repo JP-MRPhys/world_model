@@ -70,7 +70,7 @@ def initialize_settings(sigma_init=0.1, sigma_decay=0.9999, init_opt=''):
     controller_filebase = './controller/' + env_name + '.' + optimizer + '.' + str(num_episode) + '.' + str(population)
 
     model = make_model()
-
+    print("COmpleted created models")
     num_params = model.param_count
     # print("size of model", num_params)
 
@@ -358,7 +358,11 @@ def master():
         else:
             seeds = seeder.next_batch(es.popsize)
 
+
+
         packet_list = encode_solution_packets(seeds, solutions, max_len=max_length)
+
+        print("Encoding packets complete")
 
         reward_list = np.zeros(population)
         time_list = np.zeros(population)
@@ -368,7 +372,7 @@ def master():
             # print('before send packets')
             # tracker1 = SummaryTracker()
             send_packets_to_slaves(packet_list, current_env_name, dream_mode)
-            # print('between send and receive')
+            print('between send and receive')
             # tracker1.print_diff()
             packets_from_slaves = receive_packets_from_slaves()
             # print('after receive')

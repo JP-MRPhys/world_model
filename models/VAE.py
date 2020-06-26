@@ -109,8 +109,9 @@ class CVAE(tf.keras.Model):
         logging.debug("Completed creating the model")
 
         if (os.path.exists(self.image_dir)):
-            shutil.rmtree(self.image_dir, ignore_errors=True)
-            os.makedirs(self.image_dir)
+            #shutil.rmtree(self.image_dir, ignore_errors=True)
+            #os.makedirs(self.image_dir)
+            print("Image dir exits")
         else:
             os.makedirs(self.image_dir)
 
