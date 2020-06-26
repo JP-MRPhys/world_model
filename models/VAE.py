@@ -40,7 +40,7 @@ class CVAE(tf.keras.Model):
         self.learning_rate = 1e-3
         self.model_name="CVAE"
 
-        self.imput_dim = (256,256,1) 
+        self.input_dim = (256,256,1)
         self.image_dim = 128
         self.channels = 1
         self.latent_dim = LATENT_DIM
