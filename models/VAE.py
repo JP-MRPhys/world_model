@@ -204,13 +204,14 @@ class CVAE(tf.keras.Model):
 
             a = os.path.join(self.final_model_dir, self.model_name)
             self.saver.restore(sess, a)
-
+            print("***************SESSION RESTORED **************************")
             feed_dict = {self.input_image_1: input_image}
 
             z, mean, logvar= sess.run(
                 [self.z, self.mean, self.logvar],
                 feed_dict=feed_dict)
 
+            print(z)
             return z, mean, logvar
 
     def train(self):
@@ -495,6 +496,18 @@ class CVAE(tf.keras.Model):
 if __name__ == '__main__':
 
     model=CVAE()
+    filenames = list(pathlib.Path(model.training_datadir).iterdir())
+
+    file=filenames[10]
+    centre_fraction, acceleration = get_random_accelerations(high=10)
+    # training_images: fully sampled MRI images
+    # training labels: , obtained using various mask functions, here we obtain using center_fraction =[], acceleration=[]
+    training_images, training_labels = get_training_pair_images_vae(file, centre_fraction, acceleration)
+
+    image=training_images[0:model.BATCH_SIZE]
+
+
+    model.encorder_predict(image)
     #model.train()
     #model.generate_rollouts(initial_counter=0)
     #model.generate_rollouts(initial_counter=100)

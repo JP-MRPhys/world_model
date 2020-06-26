@@ -751,3 +751,35 @@ WARNING:tensorflow:From /home/jehill/anaconda3/lib/python3.6/site-packages/tenso
 Instructions for updating:
 Use standard file APIs to check for files with this prefix.
 INFO:tensorflow:Restoring parameters from ./trained_models/CVAE/final_model/CVAE
+WARNING:tensorflow:From /home/jehill/anaconda3/lib/python3.6/site-packages/tensorflow/python/ops/resource_variable_ops.py:435: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+DEBUG:root:Completed creating the model
+WARNING:tensorflow:From /home/jehill/anaconda3/lib/python3.6/site-packages/tensorflow/python/training/saver.py:1266: checkpoint_exists (from tensorflow.python.training.checkpoint_management) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use standard file APIs to check for files with this prefix.
+INFO:tensorflow:Restoring parameters from ./trained_models/CVAE/final_model/CVAE
+WARNING:tensorflow:From /home/jehill/anaconda3/lib/python3.6/site-packages/tensorflow/python/ops/resource_variable_ops.py:435: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+DEBUG:root:Completed creating the model
+WARNING:tensorflow:From /home/jehill/anaconda3/lib/python3.6/site-packages/tensorflow/python/training/saver.py:1266: checkpoint_exists (from tensorflow.python.training.checkpoint_management) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use standard file APIs to check for files with this prefix.
+INFO:tensorflow:Restoring parameters from ./trained_models/CVAE/final_model/CVAE
+WARNING:tensorflow:From /home/jehill/anaconda3/lib/python3.6/site-packages/tensorflow/python/ops/resource_variable_ops.py:435: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+DEBUG:root:Completed creating the model
+WARNING:tensorflow:From /home/jehill/anaconda3/lib/python3.6/site-packages/tensorflow/python/training/saver.py:1266: checkpoint_exists (from tensorflow.python.training.checkpoint_management) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use standard file APIs to check for files with this prefix.
+INFO:tensorflow:Restoring parameters from ./trained_models/CVAE/final_model/CVAE
+WARNING:tensorflow:From /home/jehill/anaconda3/lib/python3.6/site-packages/tensorflow/python/ops/resource_variable_ops.py:435: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+DEBUG:root:Completed creating the model
+WARNING:tensorflow:From /home/jehill/anaconda3/lib/python3.6/site-packages/tensorflow/python/training/saver.py:1266: checkpoint_exists (from tensorflow.python.training.checkpoint_management) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use standard file APIs to check for files with this prefix.
+INFO:tensorflow:Restoring parameters from ./trained_models/CVAE/final_model/CVAE
