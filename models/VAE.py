@@ -180,16 +180,34 @@ class CVAE(tf.keras.Model):
         return eps * tf.sqrt(tf.exp(logvar)) + mean
 
 
-    def encorder_predict(self, input_image):
+    def encorder_predict2(self, input_image):
 
-        with tf.Session(config=tf.ConfigProto(log_device_placement=True)) as self.sess:
+        with tf.Session(config=tf.ConfigProto(log_device_placement=False)) as self.sess:
 
+            a = os.path.join(self.final_model_dir, self.model_name)
             a = os.path.join(self.final_model_dir, self.model_name)
             self.saver.restore(self.sess, a)
 
             feed_dict = {self.input_image_1: input_image}
 
             z, mean, logvar= self.sess.run(
+                [self.z, self.mean, self.logvar],
+                feed_dict=feed_dict)
+
+            return z, mean, logvar
+
+    def encorder_predict(self, input_image):
+
+        sess = tf.Session()
+
+        with sess.as_default():
+
+            a = os.path.join(self.final_model_dir, self.model_name)
+            self.saver.restore(sess, a)
+
+            feed_dict = {self.input_image_1: input_image}
+
+            z, mean, logvar= sess.run(
                 [self.z, self.mean, self.logvar],
                 feed_dict=feed_dict)
 
@@ -478,15 +496,15 @@ if __name__ == '__main__':
 
     model=CVAE()
     #model.train()
-    model.generate_rollouts(initial_counter=0)
-    model.generate_rollouts(initial_counter=100)
-    model.generate_rollouts(initial_counter=200)
-    model.generate_rollouts(initial_counter=300)
-    model.generate_rollouts(initial_counter=400)
-    model.generate_rollouts(initial_counter=500)
-    model.generate_rollouts(initial_counter=600)
-    model.generate_rollouts(initial_counter=700)
-    model.generate_rollouts(initial_counter=800)
-    model.generate_rollouts(initial_counter=900)
-    model.generate_rollouts(initial_counter=10000)
+    #model.generate_rollouts(initial_counter=0)
+    #model.generate_rollouts(initial_counter=100)
+    #model.generate_rollouts(initial_counter=200)
+    #model.generate_rollouts(initial_counter=300)
+    #model.generate_rollouts(initial_counter=400)
+    #model.generate_rollouts(initial_counter=500)
+    #model.generate_rollouts(initial_counter=600)
+    #model.generate_rollouts(initial_counter=700)
+    #model.generate_rollouts(initial_counter=800)
+    #model.generate_rollouts(initial_counter=900)
+    #model.generate_rollouts(initial_counter=10000)
 
