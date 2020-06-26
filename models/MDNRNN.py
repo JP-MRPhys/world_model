@@ -160,8 +160,10 @@ class MDNRNN():
 
         self.init = tf.global_variables_initializer()
         self.saver = tf.train.Saver()
+        self.sess=tf.Session()
+        self.sess.run(self.init)
 
-        print("Completed creating the model")
+        print("Completed creating tMDNRNN model")
 
     def build_models(self):
 
@@ -269,11 +271,21 @@ class MDNRNN():
        return
 
 
-    def predict(self, rnn_inputs, hidden, cell_state):
+    def predict2(self, rnn_inputs, hidden, cell_state):
 
         with tf.Session(config=tf.ConfigProto(log_device_placement=True)) as self.sess:
             a = os.path.join(self.final_model_dir, self.model_name)
             self.saver.restore(self.sess, a)
+
+            feed_dict = {self.inputs: rnn_inputs, self.lstm_inputs_h: hidden, self.lstm_inputs_c: cell_state}
+
+            _, hidden, cell, z_predicted = self.sess.run(
+                [self.lstm_output, self.hidden_state, self.cell_state, self.y_predicted],
+                feed_dict=feed_dict)
+
+            return hidden, cell, z_predicted
+
+    def predict(self, rnn_inputs, hidden, cell_state):
 
             feed_dict = {self.inputs: rnn_inputs, self.lstm_inputs_h: hidden, self.lstm_inputs_c: cell_state}
 
@@ -298,14 +310,10 @@ class MDNRNN():
 
     def load_model(self, model_name):
 
-        print ("Checking for the model")
-
-        with tf.Session(config=tf.ConfigProto(log_device_placement=True)) as new_sess:
-            saver =tf.train.import_meta_graph((model_name + '.meta'))
-            #saver.restore(self.sess, self.model_dir)
-            saver.restore(new_sess,tf.train.latest_checkpoint("./"))
+            adir=os.path.join(self.model_dir, self.model_name)
+            print ("Checking for the model")
+            self.saver.restore(self.sess,adir)
             print ("Session restored")
-            return new_sess
 
     def step_decay(self, epoch):
         initial_lrate=0.001

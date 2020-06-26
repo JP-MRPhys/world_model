@@ -2,6 +2,7 @@
 import tensorflow.compat.v1 as tf  #NOTE: To train on tensorflow version 2.0
 tf.disable_v2_behavior()
 
+import json
 import os
 import numpy as np
 import pathlib
@@ -69,6 +70,7 @@ class CVAE(tf.keras.Model):
 
 
 
+
         # calculate the KL loss
         var = tf.exp(self.logvar)
         kl_loss = 0.5 * tf.reduce_sum(tf.square(self.mean) + var - 1. - self.logvar)
@@ -77,16 +79,14 @@ class CVAE(tf.keras.Model):
         self.sse_loss = 0.5 * tf.reduce_sum(tf.square(self.gold_standard_image - logits))
         self.total_loss = tf.reduce_mean(kl_loss + self.sse_loss) / self.BATCH_SIZE
         self.list_gradients = self.encoder.trainable_variables + self.decoder.trainable_variables
+        self.t_vars=self.list_gradients
         self.Optimizer = tf.train.AdamOptimizer(learning_rate=self.learning_rate, beta1=0.5).minimize(self.total_loss, var_list=self.list_gradients)
-
 
 
         # summary and writer for tensorboard visulization
 
         tf.summary.image("Reconstructed_image", self.reconstructed)
         tf.summary.image("Input_image", self.input_image)
-
-
         tf.summary.scalar("KL", kl_loss)
         tf.summary.scalar("SSE",self.sse_loss)
         tf.summary.scalar("Totalloss", self.total_loss)
@@ -102,10 +102,10 @@ class CVAE(tf.keras.Model):
         self.final_model_dir = self.logdir + '/final_model'
 
 
-
         #self.gpu_list=['/gpu:0', '/gpu:1' ,'/gpu:2', '/gpu:3']
         self.gpu_list = ['/gpu:0']
-
+        self.sess=tf.Session()
+        self.sess.run(self.init)
         print("Completed creating the model")
         logging.debug("Completed creating the model")
 
@@ -198,16 +198,21 @@ class CVAE(tf.keras.Model):
 
     def encorder_predict(self, input_image):
 
-        sess = tf.Session()
+        #sess = tf.Session()
 
-        with sess.as_default():
+        #with sess.as_default():
 
-            a = os.path.join(self.final_model_dir, self.model_name)
-            self.saver.restore(sess, a)
-            print("***************SESSION RESTORED **************************")
+           #a = os.path.join(self.final_model_dir, self.model_name)
+            #name=a + '.meta'
+            #newsaver =tf.train.import_meta_graph(name)
+
+            #newsaver.restore(sess, a)
+
+        if not self.sess._closed:
+            print("***************SESSION is active **************************")
             feed_dict = {self.input_image_1: input_image}
 
-            z, mean, logvar= sess.run(
+            z, mean, logvar= self.sess.run(
                 [self.z, self.mean, self.logvar],
                 feed_dict=feed_dict)
 
@@ -340,20 +345,15 @@ class CVAE(tf.keras.Model):
         logging.debug("Completed saving the model")
 
 
-
     def load_model(self):
 
         print ("Checking for the model")
         a=os.path.join(self.final_model_dir, self.model_name)
         print(a)
+        self.saver.restore(self.sess, a)
+        print ("Session restored")
 
-        with tf.Session(config=tf.ConfigProto(log_device_placement=True)) as self.sess:
-            self.saver.restore(self.sess, a)
-            print ("Session restored")
 
-            #now do the processing before session is close
-
-            return
 
     def step_decay(self, epoch):
         initial_lrate=0.001
@@ -400,8 +400,6 @@ class CVAE(tf.keras.Model):
 
         fig = plt.figure(figsize=(4,4))
 
-
-
         number_images=(numpy_array.shape[0])
         print(number_images)
         print(numpy_array.shape)
@@ -418,8 +416,6 @@ class CVAE(tf.keras.Model):
             plt.close()
 
     def generate_rollouts(self, initial_counter):
-
-
 
         with tf.Session(config=tf.ConfigProto(log_device_placement=True)) as self.sess:
 
@@ -492,10 +488,54 @@ class CVAE(tf.keras.Model):
                                     logvar=logvar_batch, reward=reward, reward_gs=reward_gs,  mu=mu_batch,
                                     logvar_gs=logvar_batch_gs,  z_gs=z_batch_gs, z=z_batch)
 
+    def get_model_params(self):
+        # get trainable params.
+        model_names = []
+        model_params = []
+        model_shapes = []
+
+
+        for var in self.t_vars:
+                # if var.name.startswith('conv_vae'):
+                param_name = var.name
+                p = self.sess.run(var)
+                model_names.append(param_name)
+                params = np.round(p * 10000).astype(np.int).tolist()
+                model_params.append(params)
+                model_shapes.append(p.shape)
+        return model_params, model_shapes, model_names
+
+
+    def set_model_params(self, params):
+        with self.g.as_default():
+            t_vars = tf.trainable_variables()
+            idx = 0
+            for var in t_vars:
+                # if var.name.startswith('conv_vae'):
+                pshape = tuple(var.get_shape().as_list())
+                p = np.array(params[idx])
+                assert pshape == p.shape, "inconsistent shape"
+                assign_op, pl = self.assign_ops[var]
+                self.sess.run(assign_op, feed_dict={pl.name: p / 10000.})
+                idx += 1
+
+    def load_json(self, jsonfile='vae.json'):
+        with open(jsonfile, 'r') as f:
+            params = json.load(f)
+        self.set_model_params(params)
+
+    def save_json(self, jsonfile='vae.json'):
+        model_params, model_shapes, model_names = self.get_model_params()
+        qparams = []
+        for p in model_params:
+            qparams.append(p)
+        with open(jsonfile, 'wt') as outfile:
+            json.dump(qparams, outfile, sort_keys=True, indent=0, separators=(',', ': '))
 
 if __name__ == '__main__':
 
     model=CVAE()
+    model.load_model()
     filenames = list(pathlib.Path(model.training_datadir).iterdir())
 
     file=filenames[10]
@@ -508,6 +548,9 @@ if __name__ == '__main__':
 
 
     model.encorder_predict(image)
+    model.encorder_predict(image)
+    model.encorder_predict(image)
+
     #model.train()
     #model.generate_rollouts(initial_counter=0)
     #model.generate_rollouts(initial_counter=100)
