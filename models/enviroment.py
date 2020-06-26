@@ -28,8 +28,20 @@ class fastMRIEnviroment(object):
         return mse
 
     def get_action(self):
-        centre_fraction, acceleration=get_random_accelerations(high=10)
+        centre_fraction, acceleration=self.get_random_accelerations(high=10)
         return centre_fraction, acceleration
+
+    def get_random_accelerations(self, high):
+        """
+           : we apply these to fully sampled k-space to obtain q
+           :return:random centre_fractions between 0.1 and 0.001 and accelerations between 1 and low
+        """
+        acceleration = np.random.randint(1, high=high, size=1)
+        centre_fraction = np.random.uniform(0, 1, 1)
+        decimal = np.random.randint(1, high=3, size=1)
+        centre_fraction = centre_fraction / (10 ** decimal)
+
+        return float(centre_fraction), float(acceleration)
 
 
     def step(self, action):
@@ -75,3 +87,9 @@ class fastMRIEnviroment(object):
     def close(self):
       pass
 
+
+    def seed(self, seed):
+        random.seed(seed)
+        np.random.seed
+
+        # Not really sure if this will work for reproducbility, add it for make the programms run
