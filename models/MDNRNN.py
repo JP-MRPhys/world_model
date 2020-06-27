@@ -161,7 +161,7 @@ class MDNRNN():
         self.sess=tf.Session()
         self.sess.run(self.init)
 
-        print("Completed creating tMDNRNN model")
+        print("Completed creating MDNRNN model")
 
     def build_models(self):
 
@@ -300,17 +300,16 @@ class MDNRNN():
             #shutil.rmtree(self.model_dir, ignore_errors=True)
             os.makedirs(self.model_dir)
 
-
         self.saver.save(self.sess, os.path.join(self.model_dir, self.model_name))
         print("Completed saving the model")
 
 
     def load_model(self):
-
             adir=os.path.join(self.model_dir, self.model_name)
             print ("Checking for the model")
             self.saver.restore(self.sess,adir)
             print ("Session restored")
+
 
     def step_decay(self, epoch):
         initial_lrate=0.001
@@ -330,7 +329,7 @@ class MDNRNN():
 if __name__ == '__main__':
 
     model=MDNRNN()
-    #model.train()
+    model.load_model()
 
 
 

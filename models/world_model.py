@@ -30,7 +30,7 @@ def make_model():
     vae =CVAE()
     vae.load_model()
     rnn = MDNRNN()
-    rnn.load_model()
+    #rnn.load_model()
     controller = Controller()
 
     model = Model(controller, vae, rnn)
