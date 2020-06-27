@@ -136,8 +136,6 @@ class MDNRNN():
         self.y_= self.mdn(self.lstm_output)
 
         self.y_predicted = self.mdn(self.lstm_output_p)
-
-
         self.z_loss=self.get_z_loss(self.z_true, self.y_)
         self.reward_loss=self.get_reward_loss(self.z_true, self.y_)
 
@@ -305,7 +303,6 @@ class MDNRNN():
 
         self.saver.save(self.sess, os.path.join(self.model_dir, self.model_name))
         print("Completed saving the model")
-
 
 
     def load_model(self):
