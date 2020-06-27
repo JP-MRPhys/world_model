@@ -308,7 +308,7 @@ class MDNRNN():
 
 
 
-    def load_model(self, model_name):
+    def load_model(self):
 
             adir=os.path.join(self.model_dir, self.model_name)
             print ("Checking for the model")
