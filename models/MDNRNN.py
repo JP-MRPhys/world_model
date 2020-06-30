@@ -363,7 +363,7 @@ class MDNRNN():
             #t_vars = tf.trainable_variables()
             idx = 0
             for var in self.t_vars:
-                print(var)
+                print("Restoring" + var)
                 # if var.name.startswith('conv_vae'):
                 pshape = tuple(var.get_shape().as_list())
                 p = np.array(params[idx])
