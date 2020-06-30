@@ -101,6 +101,14 @@ class CVAE(tf.keras.Model):
         self.model_dir= self.logdir + '/intraining'
         self.final_model_dir = self.logdir + '/final_model'
 
+        self.assign_ops = {}
+        for var in self.t_vars:
+            # if var.name.startswith('conv_vae'):
+            pshape = var.get_shape()
+            pl = tf.placeholder(tf.float32, pshape, var.name[:-2] + '_placeholder')
+            print(var.name)
+            assign_op = var.assign(pl)
+            self.assign_ops[var] = (assign_op, pl)
 
         #self.gpu_list=['/gpu:0', '/gpu:1' ,'/gpu:2', '/gpu:3']
         self.gpu_list = ['/gpu:0']
@@ -507,10 +515,10 @@ class CVAE(tf.keras.Model):
 
 
     def set_model_params(self, params):
-        with self.g.as_default():
-            t_vars = tf.trainable_variables()
+        #with self.g.as_default():
+            #t_vars = tf.trainable_variables()
             idx = 0
-            for var in t_vars:
+            for var in self.t_vars:
                 # if var.name.startswith('conv_vae'):
                 pshape = tuple(var.get_shape().as_list())
                 p = np.array(params[idx])
@@ -535,7 +543,8 @@ class CVAE(tf.keras.Model):
 if __name__ == '__main__':
 
     model=CVAE()
-    model.load_model()
+    model.load_json(jsonfile='vae.json')
+    model.save_json('vae.json')
     filenames = list(pathlib.Path(model.training_datadir).iterdir())
 
     file=filenames[10]

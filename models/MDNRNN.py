@@ -4,6 +4,7 @@ import shutil
 import os
 import math
 # useful referene for MDN
+import json
 
 VAE_LATENT_DIM=64
 ACTION_DIM=2
@@ -150,11 +151,24 @@ class MDNRNN():
         self.Optimizer = tf.train.AdamOptimizer(learning_rate=self.learning_rate, beta1=0.5)
 
         gvs = self.Optimizer.compute_gradients(self.loss)
-        #capped_gvs = [(tf.clip_by_value(grad, -CLIP_GRADIENT, CLIP_GRADIENT ), var) for grad, var in gvs]
-        capped_gvs=gvs
+        capped_gvs = [(tf.clip_by_value(grad, -CLIP_GRADIENT, CLIP_GRADIENT ), var) for grad, var in gvs]
+        #capped_gvs=gvs
+        self.t_vars=tf.trainable_variables()
         self.train_op = self.Optimizer.apply_gradients(capped_gvs, name='train_step')
 
         #TODO: add gradient clipping as it as an RNN to avoid back-prop time issues
+
+        self.assign_ops = {}
+        for var in self.t_vars:
+            print(var)
+
+            # if var.name.startswith('conv_vae'):
+            print(var.name[:-2])
+            pshape = var.get_shape()
+            pl = tf.placeholder(tf.float32, pshape, var.name[:-2] + '_placeholder')
+            print(var.name)
+            assign_op = var.assign(pl)
+            self.assign_ops[var] = (assign_op, pl)
 
         self.init = tf.global_variables_initializer()
         self.saver = tf.train.Saver()
@@ -309,6 +323,7 @@ class MDNRNN():
             print ("Checking for the model")
             self.saver.restore(self.sess,adir)
             print ("Session restored")
+            #self.save_json()
 
 
     def step_decay(self, epoch):
@@ -325,11 +340,59 @@ class MDNRNN():
 
         return z_true, rew_true  # , done_true
 
+    def get_model_params(self):
+        # get trainable params.
+        model_names = []
+        model_params = []
+        model_shapes = []
+
+
+        for var in self.t_vars:
+                # if var.name.startswith('conv_vae'):
+                param_name = var.name
+                p = self.sess.run(var)
+                model_names.append(param_name)
+                params = np.round(p * 10000).astype(np.int).tolist()
+                model_params.append(params)
+                model_shapes.append(p.shape)
+        return model_params, model_shapes, model_names
+
+
+    def set_model_params(self, params):
+        #with self.g.as_default():
+            #t_vars = tf.trainable_variables()
+            idx = 0
+            for var in self.t_vars:
+                print(var)
+                # if var.name.startswith('conv_vae'):
+                pshape = tuple(var.get_shape().as_list())
+                p = np.array(params[idx])
+                assert pshape == p.shape, "inconsistent shape"
+                assign_op, pl = self.assign_ops[var]
+                self.sess.run(assign_op, feed_dict={pl.name: p / 10000.})
+                idx += 1
+
+    def load_json(self, jsonfile='rnn.json'):
+        with open(jsonfile, 'r') as f:
+            params = json.load(f)
+
+        self.set_model_params(params)
+
+    def save_json(self, jsonfile='rnn.json'):
+        model_params, model_shapes, model_names = self.get_model_params()
+        qparams = []
+        for p in model_params:
+            qparams.append(p)
+        with open(jsonfile, 'wt') as outfile:
+            json.dump(qparams, outfile, sort_keys=True, indent=0, separators=(',', ': '))
+
+
 
 if __name__ == '__main__':
 
     model=MDNRNN()
-    model.load_model()
-
+    #model.save_json()
+    model.load_json()
+    #model.load_model()
 
 
