@@ -367,7 +367,7 @@ class MDNRNN():
                 # if var.name.startswith('conv_vae'):
                 pshape = tuple(var.get_shape().as_list())
                 p = np.array(params[idx])
-                assert pshape == p.shape, "inconsistent shape"
+                #assert pshape == p.shape, "inconsistent shape"
                 assign_op, pl = self.assign_ops[var]
                 self.sess.run(assign_op, feed_dict={pl.name: p / 10000.})
                 idx += 1
