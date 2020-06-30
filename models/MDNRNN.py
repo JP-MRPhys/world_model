@@ -163,7 +163,7 @@ class MDNRNN():
             print(var)
 
             # if var.name.startswith('conv_vae'):
-            print(var.name[:-2])
+            #print(var.name[:-2])
             pshape = var.get_shape()
             pl = tf.placeholder(tf.float32, pshape, var.name[:-2] + '_placeholder')
             print(var.name)
