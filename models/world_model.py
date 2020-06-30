@@ -30,7 +30,7 @@ def make_model():
     vae =CVAE()
     vae.load_json()
     rnn = MDNRNN()
-    rnn.load_json()
+    rnn.load_json(jsonfile='rnn.json')
     controller = Controller()
 
     model = Model(controller, vae, rnn)
