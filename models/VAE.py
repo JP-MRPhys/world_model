@@ -93,7 +93,6 @@ class CVAE(tf.keras.Model):
 
         self.merged_summary = tf.summary.merge_all()
         self.init = tf.global_variables_initializer()
-        self.saver = tf.train.Saver()
 
 
         self.logdir = './trained_models/' + self.model_name  # if not exist create logdir
@@ -194,7 +193,9 @@ class CVAE(tf.keras.Model):
 
             a = os.path.join(self.final_model_dir, self.model_name)
             a = os.path.join(self.final_model_dir, self.model_name)
-            self.saver.restore(self.sess, a)
+            saver = tf.train.Saver()
+
+            saver.restore(self.sess, a)
 
             feed_dict = {self.input_image_1: input_image}
 
@@ -329,7 +330,9 @@ class CVAE(tf.keras.Model):
 
 
                 a = os.path.join(self.final_model_dir, self.model_name)
-                self.saver.restore(self.sess, a)
+                saver = tf.train.Saver()
+
+                saver.restore(self.sess, a)
 
                 # so can see improvement fix z_samples
                 z_samples = np.random.uniform(-1, 1, size=(self.batch_size, self.latent_dim)).astype(np.float32)
@@ -347,18 +350,20 @@ class CVAE(tf.keras.Model):
             os.makedirs(a)
             print("Create a model dir:" +  a)
 
-
-        self.saver.save(self.sess, os.path.join(a))
+        saver = tf.train.Saver()
+        saver.save(self.sess, os.path.join(a))
         print("Completed saving the model")
         logging.debug("Completed saving the model")
 
 
     def load_model(self):
 
+        saver = tf.train.Saver()
+
         print ("Checking for the model")
         a=os.path.join(self.final_model_dir, self.model_name)
         print(a)
-        self.saver.restore(self.sess, a)
+        saver.restore(self.sess, a)
         print ("Session restored")
 
 
@@ -424,11 +429,13 @@ class CVAE(tf.keras.Model):
             plt.close()
 
     def generate_rollouts(self, initial_counter):
+        saver = tf.train.Saver()
+
 
         with tf.Session(config=tf.ConfigProto(log_device_placement=True)) as self.sess:
 
             a = os.path.join(self.final_model_dir, self.model_name)
-            self.saver.restore(self.sess, a)
+            saver.restore(self.sess, a)
 
             filenames = list(pathlib.Path(self.training_datadir).iterdir())
             np.random.shuffle(filenames)
