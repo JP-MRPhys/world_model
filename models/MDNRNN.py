@@ -323,7 +323,7 @@ class MDNRNN():
             print ("Checking for the model")
             self.saver.restore(self.sess,adir)
             print ("Session restored")
-            #self.save_json()
+            self.save_json()
 
 
     def step_decay(self, epoch):
@@ -381,7 +381,7 @@ class MDNRNN():
 
         self.set_model_params(params)
 
-    def save_json(self, jsonfile='rnn.json'):
+    def save_json(self, jsonfile='rnn2.json'):
         model_params, model_shapes, model_names = self.get_model_params()
         qparams = []
         for p in model_params:
@@ -395,7 +395,7 @@ if __name__ == '__main__':
 
     model=MDNRNN()
     #model.save_json()
-    model.load_json()
-    #model.load_model()
+    #model.load_json()
+    model.load_model()
 
 
