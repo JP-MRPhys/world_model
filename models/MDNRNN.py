@@ -151,8 +151,8 @@ class MDNRNN():
         self.Optimizer = tf.train.AdamOptimizer(learning_rate=self.learning_rate, beta1=0.5)
 
         gvs = self.Optimizer.compute_gradients(self.loss)
-        capped_gvs = [(tf.clip_by_value(grad, -CLIP_GRADIENT, CLIP_GRADIENT ), var) for grad, var in gvs]
-        #capped_gvs=gvs
+        #capped_gvs = [(tf.clip_by_value(grad, -CLIP_GRADIENT, CLIP_GRADIENT ), var) for grad, var in gvs]
+        capped_gvs=gvs
         self.t_vars=tf.trainable_variables()
         self.train_op = self.Optimizer.apply_gradients(capped_gvs, name='train_step')
 
