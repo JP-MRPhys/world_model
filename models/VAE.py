@@ -113,8 +113,8 @@ class CVAE(tf.keras.Model):
         self.gpu_list = ['/gpu:0']
         self.sess=tf.Session()
         self.sess.run(self.init)
-        print("Completed creating the model")
-        logging.debug("Completed creating the model")
+        print("Completed creating VAE the model")
+        #logging.debug("Completed creating the model")
 
         if (os.path.exists(self.image_dir)):
             #shutil.rmtree(self.image_dir, ignore_errors=True)
