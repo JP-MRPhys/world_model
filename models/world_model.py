@@ -28,9 +28,9 @@ FASTMRI_DATADIR= "/home/jehillparikh/world_model/models/DATA/fastmri_data/single
 def make_model():
 
     vae =CVAE()
-    vae.load_json()
+    vae.load_json(jsonfile='vae.json')
     rnn = MDNRNN()
-    rnn.load_json(jsonfile='rnn.json')
+    #rnn.load_json(jsonfile='rnn.json')
     controller = Controller()
 
     model = Model(controller, vae, rnn)
