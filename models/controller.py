@@ -9,7 +9,7 @@ OUTPUT_SIZE = 2
 def activations(a):
   a = np.tanh(a)
   a[1] = (a[1] + 1) / 2
-  a[2] = (a[2] + 1) / 2
+  #a[2] = (a[2] + 1) / 2
   return a
 
 class Controller():
