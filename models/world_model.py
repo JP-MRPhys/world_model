@@ -239,8 +239,8 @@ def simulate(model, num_episode=5, seed=-1, max_len=-1, generate_data_mode=False
             print(np.shape(rnn_hidden))
             print(np.shape(rnn_cell))
             y_pred = y_pred_rnn
-            model.hidden = rnn_hidden
-            model.cell_values = rnn_cell
+            #model.hidden = rnn_hidden
+            #model.cell_values = rnn_cell
 
             controller_obs = np.concatenate([np.squeeze(vae_encoded_obs), np.squeeze(rnn_hidden)])
 
