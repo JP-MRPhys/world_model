@@ -188,7 +188,7 @@ def simulate(model, num_episode=5, seed=-1, max_len=-1, generate_data_mode=False
 
         obs = model.env.reset()
         reward = 0
-        action = np.array([0, 0, 0])
+        action = np.array([0, 0])
 
         if obs is None:
             obs = np.zeros(model.input_size)
