@@ -160,7 +160,7 @@ class MDNRNN():
 
         self.assign_ops = {}
         for var in self.t_vars:
-            print(var)
+            #print(var)
 
             # if var.name.startswith('conv_vae'):
             #print(var.name[:-2])
