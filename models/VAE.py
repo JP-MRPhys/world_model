@@ -207,18 +207,8 @@ class CVAE(tf.keras.Model):
 
     def encorder_predict(self, input_image):
 
-        #sess = tf.Session()
-
-        #with sess.as_default():
-
-           #a = os.path.join(self.final_model_dir, self.model_name)
-            #name=a + '.meta'
-            #newsaver =tf.train.import_meta_graph(name)
-
-            #newsaver.restore(sess, a)
-
         if not self.sess._closed:
-            print("***************SESSION is active **************************")
+            #print("***************SESSION is active **************************")
             feed_dict = {self.input_image_1: input_image}
 
             z, mean, logvar= self.sess.run(
