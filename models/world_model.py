@@ -150,7 +150,7 @@ class Model:
 
     def update(self, obs, t):
         if obs.shape == self.vae.input_dim:
-            z, _, _ =self.vae.encorder_predict(obs)  #TODO: check this later expand dim for time being
+            z, _, _ =self.vae.encorder_predict(obs)  
 
             return z
         else:
