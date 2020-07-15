@@ -211,6 +211,7 @@ def simulate(model, num_episode=5, seed=-1, max_len=-1, generate_data_mode=False
                     time.sleep(0.1)
             # else:
             #   model.env.render('rgb_array')
+            print("new time point")
 
             vae_encoded_obs = model.update(obs, t)
 
