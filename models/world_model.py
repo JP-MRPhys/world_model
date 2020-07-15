@@ -150,12 +150,11 @@ class Model:
 
     def update(self, obs, t):
         if obs.shape == self.vae.input_dim:
-            z, _, _ =self.vae.encorder_predict(obs)  
+            z, _, _ =self.vae.encorder_predict(np.expand_dims(obs,3))  #TODO: check this later expand dim for time being
 
             return z
         else:
-
-         return obs
+            return obs
 
 
 def evaluate(model, num_episode, max_len):
@@ -192,7 +191,7 @@ def simulate(model, num_episode=5, seed=-1, max_len=-1, generate_data_mode=False
 
         if obs is None:
             obs = np.zeros(model.input_size)
-            obs = np.expand_dims(obs,3)
+            #obs = np.expand_dims(obs,3)
 
         total_reward = 0.0
 
