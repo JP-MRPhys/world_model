@@ -53,7 +53,7 @@ class fastMRIEnviroment(object):
         centre_fraction, acceleration = action[0], action[1]
         training_images, training_labels =  get_training_pair_images_vae(self.filenames[self.counter], centre_fraction, acceleration)
 
-        reward=self.get_reward(training_images[:,:,:,0], training_labels)
+        reward=self.get_reward(training_images[:,:,:,0], training_labels[:,:,:,0])
         print( self.counter % self.batch_size)
 
         if (self.counter % self.batch_size == 0):
