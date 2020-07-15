@@ -218,14 +218,14 @@ def simulate(model, num_episode=5, seed=-1, max_len=-1, generate_data_mode=False
             print(np.shape(action))
             print(np.shape(reward))
 
-            bb=np.array(model.hidden)
-            cc=np.array(model.cell_values)
+            hidden=np.array(model.hidden)
+            cell_state=np.array(model.cell_values)
 
-            print(np.shape(bb))
-            print(np.shape(cc))
+            print(np.shape(hidden))
+            print(np.shape(cell_state))
 
-            bb=np.reshape(1, np.shape(bb)[0])
-            cc = np.reshape(1, np.shape(cc)[0])
+            hidden=np.reshape(hidden, [1, np.shape(hidden)[0]])
+            cell_state = np.reshape(cell_state,[1, np.shape(cell_state)[0]])
             #input_to_rnn = [np.array([[np.concatenate([vae_encoded_obs, action, reward])]]), np.array([model.hidden]),
             #                np.array([model.cell_values])]
 
@@ -233,7 +233,7 @@ def simulate(model, num_episode=5, seed=-1, max_len=-1, generate_data_mode=False
             merged_input=np.concatenate([np.squeeze(vae_encoded_obs), action, [reward]])
             merged_input = np.reshape(merged_input, [1, 1, np.shape(merged_input)[0]])
 
-            y_pred_rnn, rnn_hidden, rnn_cell = model.rnn.predict(merged_input, np.array(model.hidden), np.array(model.cell_values))
+            y_pred_rnn, rnn_hidden, rnn_cell = model.rnn.predict(merged_input, hidden,cell_state)
 
             y_pred = y_pred_rnn
             model.hidden = rnn_hidden
