@@ -223,7 +223,7 @@ def simulate(model, num_episode=5, seed=-1, max_len=-1, generate_data_mode=False
 
 
             merged_input=np.concatenate([np.squeeze(vae_encoded_obs), action, [reward]])
-            merged_input = np.reshape(merged_input, [1, 1, np.shape(a)[0]])
+            merged_input = np.reshape(merged_input, [1, 1, np.shape(merged_input)[0]])
 
             y_pred_rnn, rnn_hidden, rnn_cell = model.rnn.predict(merged_input, np.array(model.hidden), np.array(model.cell_values))
 

@@ -215,7 +215,7 @@ class CVAE(tf.keras.Model):
                 [self.z, self.mean, self.logvar],
                 feed_dict=feed_dict)
 
-            print(z)
+            #print(z)
             return z, mean, logvar
 
     def train(self):
