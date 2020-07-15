@@ -218,8 +218,8 @@ def simulate(model, num_episode=5, seed=-1, max_len=-1, generate_data_mode=False
             print(np.size(action))
             print(np.size(reward))
 
-            input_to_rnn = [np.array([[np.concatenate([vae_encoded_obs, action, [reward]])]]), np.array([model.hidden]),
-                            np.array([model.cell_values])]
+            #input_to_rnn = [np.array([[np.concatenate([vae_encoded_obs, action, reward])]]), np.array([model.hidden]),
+            #                np.array([model.cell_values])]
 
             y_pred_rnn, rnn_hidden, rnn_cell = model.rnn.predict([np.concatenate([vae_encoded_obs, action, [reward]])], np.array(model.hidden), np.array(model.cell_values))
 
