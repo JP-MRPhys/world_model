@@ -149,11 +149,8 @@ class Model:
         self.cell_values = np.zeros(self.rnn.hidden_units)
 
     def update(self, obs, t):
-            z, _, _ =self.vae.encorder_predict(np.expand_dims(obs,axis=0))  #TODO: check this later expand dim for time being
+            z, _, _ =self.vae.encorder_predict(np.expand_dims(obs,axis=3))  #TODO: check this later expand dim for time being
             return z
-
-
-
 
 
     def update_legacy(self, obs, t):
