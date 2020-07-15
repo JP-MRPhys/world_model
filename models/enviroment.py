@@ -67,7 +67,7 @@ class fastMRIEnviroment(object):
             self.counter +=1
 
         # state, reward, done,
-        return training_labels, training_images, action, reward, self.done
+        return training_labels[:,:,:,0], reward, self.done
 
     def get_filenames(self):
 

@@ -253,7 +253,7 @@ def simulate(model, num_episode=5, seed=-1, max_len=-1, generate_data_mode=False
             # print(action)
             # action = [-0.1,1,0]
 
-            obs, reward, done, info = model.env.step(action)
+            obs, reward, done = model.env.step(action)
 
             total_reward += reward
 
