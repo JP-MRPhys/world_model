@@ -105,7 +105,7 @@ class CVAE(tf.keras.Model):
             # if var.name.startswith('conv_vae'):
             pshape = var.get_shape()
             pl = tf.placeholder(tf.float32, pshape, var.name[:-2] + '_placeholder')
-            print(var.name)
+            #print(var.name)
             assign_op = var.assign(pl)
             self.assign_ops[var] = (assign_op, pl)
 

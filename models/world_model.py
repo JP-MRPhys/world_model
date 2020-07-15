@@ -149,12 +149,13 @@ class Model:
         self.cell_values = np.zeros(self.rnn.hidden_units)
 
     def update(self, obs, t):
-        if obs.shape == self.vae.input_dim:
+        #if obs.shape == self.vae.input_dim:
             z, _, _ =self.vae.encorder_predict(obs)  #TODO: check this later expand dim for time being
 
             return z
-        else:
-            return obs
+        #else:
+
+        #return obs
 
 
 def evaluate(model, num_episode, max_len):
