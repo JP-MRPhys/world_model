@@ -21,6 +21,8 @@ dream_mode = False
 RENDER_DELAY = False
 record_video = False
 ADD_NOISE = False
+ACTION_DIM=2
+REWARD_DIM=1
 
 
 FASTMRI_DATADIR= "/home/jehillparikh/world_model/models/DATA/fastmri_data/singlecoil_train/"
@@ -241,7 +243,15 @@ def simulate(model, num_episode=5, seed=-1, max_len=-1, generate_data_mode=False
             #                np.array([model.cell_values])]
 
 
-            merged_input=np.concatenate([np.squeeze(vae_encoded_obs), action, [reward]])
+            batch_size=np.shape(np.squeeze(vae_encoded_obs))[0]
+            actions=np.ones(batch_size, ACTION_DIM)
+
+            actions[:,0]=action(0)
+            rewards=np.ones(batch_size)*reward
+
+            #merged_input=np.concatenate([np.squeeze(vae_encoded_obs), [action], [reward]])
+            merged_input=np.concatenate([np.squeeze(vae_encoded_obs), actions, rewards])
+
             merged_input = np.reshape(merged_input, [1, 1, np.shape(merged_input)[0]])
 
             y_pred_rnn, rnn_hidden, rnn_cell = model.rnn.predict(merged_input, hidden,cell_state)
