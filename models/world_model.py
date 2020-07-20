@@ -273,8 +273,7 @@ def simulate(model, num_episode=5, seed=-1, max_len=-1, generate_data_mode=False
             if batch_size ==1 :
                 controller_obs = np.concatenate([np.squeeze(vae_encoded_obs), np.squeeze(rnn_hidden)])
             else:
-
-                controller_obs = np.concatenate([np.squeeze(np.mean(vae_encoded_obs), axis=0), np.squeeze(np.mean(rnn_hidden),axis=0)])
+                controller_obs = np.concatenate([np.squeeze(np.mean(vae_encoded_obs, axis=0)), np.squeeze(np.squeeze(rnn_hidden,axis=0))])
                 #controller_obs = np.concatenate([np.squeeze(vae_encod
                 # ed_obs), np.squeeze(rnn_hidden)], axis=1)
 
