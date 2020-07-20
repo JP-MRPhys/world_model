@@ -243,7 +243,7 @@ def simulate(model, num_episode=5, seed=-1, max_len=-1, generate_data_mode=False
             #                np.array([model.cell_values])]
 
 
-            batch_size=np.shape(np.squeeze(vae_encoded_obs))[0]
+            batch_size=np.shape(vae_encoded_obs)[0]
             print(batch_size)
             actions=np.ones(shape=(batch_size, ACTION_DIM))
 
