@@ -21,6 +21,7 @@ dream_mode = False
 RENDER_DELAY = False
 record_video = False
 ADD_NOISE = False
+VAE_DIM=64
 ACTION_DIM=2
 REWARD_DIM=1
 
@@ -244,23 +245,21 @@ def simulate(model, num_episode=5, seed=-1, max_len=-1, generate_data_mode=False
 
 
             batch_size=np.shape(vae_encoded_obs)[0]
-            print("Batch size" + str (batch_size))
-            actions=np.ones(shape=(batch_size, ACTION_DIM))
 
-            actions[:,0]=action[0]
-            actions[:,1]=action[1]
-            rewards=np.ones(shape=(batch_size,1))*reward
+            if batch_size == 1:
+                a = np.concatenate([np.squeeze(vae_encoded_obs), action, [reward]])
 
-            print(actions)
-            print(rewards)
+            else:
+                actions = np.ones(shape=(batch_size, ACTION_DIM))
+                actions[:, 0] = action[0]
+                actions[:, 1] = action[1]
+                rewards = np.ones(shape=(batch_size, 1)) * reward
+                a = np.concatenate([np.squeeze(vae_encoded_obs), actions, rewards], axis=1)
 
-
-            merged_input=np.concatenate([np.squeeze(vae_encoded_obs), actions, rewards])
-            #merged_input=np.concatenate([vae_encoded_obs, actions, rewards])
-            print(merged_input)
-
-            merged_input = np.reshape(merged_input, [1, 1, np.shape(merged_input)[0]])
-            print(merged_input)
+            DIM = VAE_DIM + ACTION_DIM + REWARD_DIM
+            print(a.shape)
+            merged_input = np.reshape(a, [batch_size, 1, DIM])
+            print(merged_input.shape)
 
             y_pred_rnn, rnn_hidden, rnn_cell = model.rnn.predict(merged_input, hidden,cell_state)
 
