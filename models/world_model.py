@@ -270,7 +270,10 @@ def simulate(model, num_episode=5, seed=-1, max_len=-1, generate_data_mode=False
             #model.hidden = rnn_hidden
             #model.cell_values = rnn_cell
 
-            controller_obs = np.concatenate([np.squeeze(vae_encoded_obs), np.squeeze(rnn_hidden)])
+            if batch_size ==1 :
+                controller_obs = np.concatenate([np.squeeze(vae_encoded_obs), np.squeeze(rnn_hidden)])
+            else:
+                controller_obs = np.concatenate([np.squeeze(vae_encoded_obs), np.squeeze(rnn_hidden)], axis=1)
 
             if generate_data_mode:
                 #action = config.generate_data_action(t=t, env=model.env)  #not used
