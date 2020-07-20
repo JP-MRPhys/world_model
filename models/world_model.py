@@ -244,17 +244,22 @@ def simulate(model, num_episode=5, seed=-1, max_len=-1, generate_data_mode=False
 
 
             batch_size=np.shape(vae_encoded_obs)[0]
-            print(batch_size)
+            print("Batch size" + str (batch_size))
             actions=np.ones(shape=(batch_size, ACTION_DIM))
 
             actions[:,0]=action[0]
             actions[:,1]=action[1]
-            rewards=np.ones(shape=batch_size)*reward
+            rewards=np.ones(shape=(batch_size,1))*reward
+
+            print(np.shape(actions))
+
 
             #merged_input=np.concatenate([np.squeeze(vae_encoded_obs), [action], [reward]])
             merged_input=np.concatenate([vae_encoded_obs, actions, rewards])
+            print(merged_input)
 
             merged_input = np.reshape(merged_input, [1, 1, np.shape(merged_input)[0]])
+            print(merged_input)
 
             y_pred_rnn, rnn_hidden, rnn_cell = model.rnn.predict(merged_input, hidden,cell_state)
 
