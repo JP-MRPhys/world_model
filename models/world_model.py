@@ -221,11 +221,13 @@ def simulate(model, num_episode=5, seed=-1, max_len=-1, generate_data_mode=False
             #   model.env.render('rgb_array')
             print("new time point")
 
+
             vae_encoded_obs = model.update(obs, t)
 
             print(np.shape(vae_encoded_obs))
             print(np.shape(action))
             print(np.shape(reward))
+            print(reward)
 
             hidden=np.array(model.hidden)
             cell_state=np.array(model.cell_values)
