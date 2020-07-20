@@ -251,7 +251,8 @@ def simulate(model, num_episode=5, seed=-1, max_len=-1, generate_data_mode=False
             actions[:,1]=action[1]
             rewards=np.ones(shape=(batch_size,1))*reward
 
-            print(np.shape(actions))
+            print(actions)
+            print(rewards)
 
 
             merged_input=np.concatenate([np.squeeze(vae_encoded_obs), actions, rewards])
