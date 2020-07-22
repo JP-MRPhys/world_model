@@ -21,6 +21,7 @@ class fastMRIEnviroment(object):
         self.counter=1
         self.done=False
         self.batch_size=1
+        random.shuffle(self.filenames)
 
     def get_reward(self, training_images, training_labels):
 
