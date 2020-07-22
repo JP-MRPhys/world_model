@@ -29,6 +29,10 @@ def get_training_pair(file, centre_fraction, acceleration):
     masked_kspace, mask = T.apply_mask(volume_kspace_tensor, mask_func)
     masked_kspace_np=masked_kspace.numpy().reshape(masked_kspace.shape)
 
+    hf.close()
+
+    if hf:
+        print(file + "is still open")
     return np.expand_dims(volume_image,3), masked_kspace_np
 
 
