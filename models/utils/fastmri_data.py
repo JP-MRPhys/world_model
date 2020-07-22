@@ -125,7 +125,7 @@ def get_random_accelerations_old():
 def train(datadir):
     files = list(pathlib.Path(datadir).iterdir())
     np.random.shuffle(files)
-    for file in files:
+    for file in files[0:4]:
         print(file)
         centre_fraction,acceleration=get_random_accelerations(high=5)
         image, masked_kspace =get_training_pair_images(file, centre_fraction=centre_fraction,acceleration=acceleration)
@@ -137,4 +137,5 @@ if __name__ == '__main__':
 
     #training_datadir='/media/jehill/Data/ML_data/fastmri/singlecoil/train/singlecoil_train/'
     training_datadir='/media/jehill/DATA/ML_data/fastmri/singlecoil/train/singlecoil_train/'
+    training_datadir='/media/DATA/ML_data/fastmri/singlecoil/train/singlecoil_train/'
     train(training_datadir)

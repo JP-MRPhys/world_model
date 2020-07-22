@@ -1,8 +1,8 @@
 import h5py
 import numpy as np
 import pathlib
-from   utils.subsample import MaskFunc
-import utils.transforms as T
+from   utils.subsample import MaskFunc                         #.utils.subsample import MaskFunc
+import utils.transforms as T                                   # utils.transforms as T
 
 # a number of utility functions to read and transform the data
 
@@ -125,10 +125,12 @@ def get_random_accelerations_old():
 def train(datadir):
     files = list(pathlib.Path(datadir).iterdir())
     np.random.shuffle(files)
-    for file in files:
+    for file in files[0:4]:
         print(file)
+
+        f='/media/DATA/ML_data/fastmri/singlecoil/train/singlecoil_train/file1001273.h5'
         centre_fraction,acceleration=get_random_accelerations(high=5)
-        image, masked_kspace =get_training_pair_images(file, centre_fraction=centre_fraction,acceleration=acceleration)
+        image, masked_kspace =get_training_pair_images(f, centre_fraction=centre_fraction,acceleration=acceleration)
         print(image.shape)
         print(masked_kspace.shape)
 

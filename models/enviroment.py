@@ -3,6 +3,7 @@ import numpy as np
 import pathlib
 from datetime import datetime, timedelta
 from fastmri_data import get_training_pair_images_vae, get_random_accelerations
+
 import random
 
 #action is the random accelerating factors  see how these are selected by others
@@ -19,7 +20,7 @@ class fastMRIEnviroment(object):
         print("Number training data " + str(self.number_files))
         self.counter=1
         self.done=False
-        self.batch_size=3
+        self.batch_size=1
 
     def get_reward(self, training_images, training_labels):
 
@@ -51,7 +52,9 @@ class fastMRIEnviroment(object):
 
 
         centre_fraction, acceleration = action[0], action[1]
-        training_images, training_labels =  get_training_pair_images_vae(self.filenames[self.counter], centre_fraction, acceleration)
+        file=self.filenames[0]
+        print(file)
+        training_images, training_labels =  get_training_pair_images_vae(file, centre_fraction, acceleration)
 
         reward=self.get_reward(training_images[:,:,:,0], training_labels[:,:,:,0])
         print( self.counter % self.batch_size)
@@ -93,3 +96,19 @@ class fastMRIEnviroment(object):
         np.random.seed
 
         # Not really sure if this will work for reproducbility, add it for make the programms run
+
+
+if __name__ == '__main__':
+
+    env=fastMRIEnviroment(datadir='/media/DATA/ML_data/fastmri/singlecoil/train/singlecoil_train/')
+
+
+    while True:
+        action = np.ones(2)
+        action[0], action[1] = env.get_action()
+
+        obs,reward, done= env.step(action)
+        print(np.shape(obs))
+        print(reward)
+        if done:
+            print("New file")
