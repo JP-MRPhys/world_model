@@ -54,7 +54,7 @@ class fastMRIEnviroment(object):
 
         centre_fraction, acceleration = action[0], action[1]
         random.shuffle(self.filenames)
-        randomIndex=np.random.randint(0, high=30,size=1)
+        randomIndex=int(np.random.randint(0, high=30,size=1))
         file=self.filenames[randomIndex]
         print(file)
         training_images, training_labels =  get_training_pair_images_vae(file, centre_fraction, acceleration)
