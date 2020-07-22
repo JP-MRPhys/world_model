@@ -19,7 +19,7 @@ def get_training_pair(file, centre_fraction, acceleration):
     """
 
 
-    hf = h5py.File(file, 'r')
+    hf = h5py.File(file, 'r', libver="latest", swmr=True)
 
     volume_kspace = hf['kspace'][()]
     volume_image = hf['reconstruction_esc'][()]
@@ -70,7 +70,7 @@ def get_training_pair_images_vae(file, centre_fraction, acceleration, image_size
     :return: true gold standard and the fft of the masked k-space image
 
     """
-    hf = h5py.File(file)
+    hf = h5py.File(file, 'r')
     volume_kspace = hf['kspace'][()]
     volume_image = hf['reconstruction_esc'][()]
     mask_func = MaskFunc(center_fractions=[centre_fraction],
