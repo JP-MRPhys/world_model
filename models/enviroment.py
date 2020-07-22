@@ -70,6 +70,8 @@ class fastMRIEnviroment(object):
             self.done=False
             self.counter +=1
 
+        random.shuffle(self.filenames)
+
         # state, reward, done,
         return training_labels[:,:,:,0], reward, self.done
 
