@@ -3,7 +3,7 @@
 ###  Generative model
 ##### 1. Train VAE with random actions (need to select acceleration factor and centre fraction), save model as json format (to load multiple times) 
 ##### 2. Check VAE recons: they are blurry (WIP need to optimize)
-##### 3. Generate series with random actions and k-spaces datasets to train probablistics RNN
+##### 3. Generate series with random actions "a" and recons datasets to obtain latent representation "z" required to train RNN
 
 
 ### MDN-RNN 
