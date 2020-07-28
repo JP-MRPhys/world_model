@@ -9,8 +9,8 @@
 ### MDN-RNN 
 
 ##### 1. Train MDN-RNN with series datasets i.e. actions and latent vae-representation rnn.train()
-##### 2. Save the model in json format, so can create replicas 
-##### 3. Model the models to a git-repo
+##### 2. Save the model in json format
+##### 3. Commit the models to a git-repo
 
 
 ### Controller 
