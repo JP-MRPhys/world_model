@@ -15,5 +15,7 @@
 ### Train controller 
 
 
+### Inference using controller to generate new actions
+
 
 ##### Datasets FastMRI https://fastmri.org/ with a custom enviroment, to provide rewards are MSE between gold standard and reconstructed
