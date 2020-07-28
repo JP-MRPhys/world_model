@@ -28,4 +28,6 @@ python train_controller.py fastmri -e 1 -n 4 -t 1 --max_length 100
 
 ###### References: https://github.com/hardmaru/WorldModelsExperiments
 
-###### License This project is licensed under the MIT License - see the LICENSE.md file for details
+###### License: MIT Open source
+
+
