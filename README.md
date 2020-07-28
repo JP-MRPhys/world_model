@@ -12,7 +12,7 @@
 ####
 ####
 
-### Train controller using es 
+### Train linear controller using es 
 python train_controller.py fastmri -e 1 -n 4 -t 1 --max_length 100
 
 ### Inference using controller to generate new actions
