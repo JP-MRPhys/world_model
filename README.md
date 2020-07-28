@@ -8,14 +8,14 @@
 
 ### MDN-RNN 
 
-##### Train MDN-RNN with series datasets i.e. actions and latent representation rnn.train()
-##### Save the model in json format, so can create replicas 
-##### Model the models to a git-repo
+##### 1. Train MDN-RNN with series datasets i.e. actions and latent representation rnn.train()
+##### 2. Save the model in json format, so can create replicas 
+##### 3. Model the models to a git-repo
 
 
 ### Controller 
 
-##### Clone git-repo in a GCP instance with 64 cores to train the controller
+##### Clone git-repo in a GCP VM-instance with 64 cores to train the controller
 ##### Train linear controller using CMA-ES: No tensorflow required, see David Ha's implementation for details
 python train_controller.py fastmri -e 1 -n 4 -t 1 --max_length 100
 
