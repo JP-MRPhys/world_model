@@ -2,7 +2,7 @@
 
 ###  Generative model
 ##### 1. Train VAE with random actions (need to select acceleration factor and centre fraction), save model as json format (to load multiple times) 
-##### 2. Check VAE recons: they are blurry (WIP need to optimize)
+##### 2. Check VAE recons: they are blurry (WIP need to optimize): see the juypter notebook
 ##### 3. Generate series with random actions "a" and relavant, reconstructed images to obtain latent representation "z" required to train RNN
 
 
