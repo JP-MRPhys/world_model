@@ -3,13 +3,13 @@
 ###  Generative model
 ##### 1. Train VAE with random actions (need to select acceleration factor and centre fraction), save model as json format (to load multiple times) 
 ##### 2. Check VAE recons: they are blurry (WIP need to optimize)
-##### 3. Generate series with random actions "a" and recons datasets to obtain latent representation "z" required to train RNN
+##### 3. Generate series with random actions "a" and relavant, reconstructed images to obtain latent representation "z" required to train RNN
 
 
 ### MDN-RNN 
 
-#####
-#####
+##### Train MDN-RNN with series datasets i.e. actions and latent representation rnn.train()
+##### Save the model in json format, so can create replicas 
 #####
 
 
