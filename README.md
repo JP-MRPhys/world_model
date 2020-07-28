@@ -16,7 +16,9 @@
 ### Controller 
 
 ##### Clone git-repo in a GCP VM-instance with 64 cores to train the controller
-##### Train linear controller using CMA-ES: No tensorflow required, see David Ha's implementation for details
+##### Install MPI (https://www.youtube.com/watch?v=FOqhiX4X5xw), anaconda, and mpi4py (via pip)
+##### Train linear controller using CMA-ES: No tensorflow required, using David Ha's implementation for details references below
+
 python train_controller.py fastmri -e 1 -n 4 -t 1 --max_length 100
 
 ### Inference using controller to generate new actions
