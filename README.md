@@ -12,10 +12,15 @@
 ####
 ####
 
-### Train controller 
-
+### Train controller using es 
+python train_controller.py fastmri -e 1 -n 4 -t 1 --max_length 100
 
 ### Inference using controller to generate new actions
 
 
 ##### Datasets FastMRI https://fastmri.org/ with a custom enviroment, to provide rewards are MSE between gold standard and reconstructed
+
+Refernces: https://github.com/hardmaru/WorldModelsExperiments
+
+License
+This project is licensed under the MIT License - see the LICENSE.md file for details
