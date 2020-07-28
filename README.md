@@ -16,4 +16,4 @@
 
 
 
-#### Datasets: FastMRI https://fastmri.org/ : custom enviroment, rewards are MSE between 
+##### Datasets FastMRI https://fastmri.org/ with a custom enviroment, to provide rewards are MSE between gold standard and reconstructed
