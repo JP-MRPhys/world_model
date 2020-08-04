@@ -23,6 +23,10 @@ python train_controller.py fastmri -e 1 -n 4 -t 1 --max_length 100
 
 ### Inference using controller to generate new actions
 
+![alt text](https://github.com/JP-MRPhys/world_model/blob/master/models/trained_models/CVAE/images_rollouts_undersampled/_rollout_1a_7.0_.png)
+
+
+
 
 ###### Datasets FastMRI https://fastmri.org/ with a custom enviroment, to provide rewards are MSE between gold standard and reconstructed images
 
