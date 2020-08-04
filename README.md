@@ -1,4 +1,4 @@
-### World Model implementation for fastMRI datasets to accelerate MRI scanning 
+### World Model implementation for fastMRI datasets towards autonoumus imaging 
 
 ###  Generative model
 ##### 1. Train VAE with random actions (need to select acceleration factor and centre fraction), save model as json format (to load multiple times) 
