@@ -70,7 +70,7 @@ def initialize_settings(sigma_init=0.1, sigma_decay=0.9999, init_opt=''):
     controller_filebase = './controller/' + env_name + '.' + optimizer + '.' + str(num_episode) + '.' + str(population)
 
     model = make_model()
-    print("COmpleted created models")
+    print("Completed created models")
     num_params = model.param_count
     # print("size of model", num_params)
 
