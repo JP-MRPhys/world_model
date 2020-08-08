@@ -37,6 +37,6 @@ python train_controller.py fastmri -e 1 -n 4 -t 1 --max_length 100
 
 ###### License: MIT Open source
 
-##### Acknowledgements: Google cloud platform for research credits 
+##### Acknowledgements: Google Cloud Platform for research credits 
 
 
