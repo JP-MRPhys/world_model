@@ -3,12 +3,12 @@
 ###  Generative model
  1. Train VAE with random actions (need to select acceleration factor and centre fraction), save model as json format (to load multiple times) 
  2. Check VAE recons: they will be blurry use autoregressive flows (VQ-VAE)
- 3. Generate series datasets with random actions "a" and relavant, reconstructed images to obtain latent representation "z" required to train RNN
+ 3. Generate series datasets with random actions "aceeleration and centre fraction" reconstructed images to obtain latent representation "z" required to train RNN
 
 
 ### MDN-RNN 
 
- 1. Train MDN-RNN with series datasets i.e. actions and latent vae-representation rnn.train()
+ 1. Train MDN-RNN with series datasets i.e. actions and latent vae-representation rnn.train() to obtain probablity distribution over action given latents 
  2. Save the model in json format
  3. Commit the models to a git-repo
 
