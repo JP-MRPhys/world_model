@@ -28,7 +28,7 @@ python train_controller.py fastmri -e 1 -n 4 -t 1 --max_length 100
 
 
 
-###### Datasets FastMRI https://fastmri.org/ with a custom enviroment, to provide rewards are MSE between gold standard and reconstructed images
+###### Datasets: Knee MRI:FastMRI https://fastmri.org/ with a custom enviroment, to provide rewards are MSE between gold standard and reconstructed images
 
 
 
