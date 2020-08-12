@@ -1,7 +1,7 @@
 ### World Model implementation for fastMRI datasets towards autonoumus imaging (selecting acceleration factors)
 
 ###  Generative model
- 1. Train VAE with random actions (need to select acceleration factor and centre fraction), save model as json format (to load multiple times) 
+ 1. Train VAE with random actions (select acceleration factor and centre fraction), save model as json format (to load multiple times) 
  2. Check VAE recons: they will be blurry use autoregressive flows (VQ-VAE) in future 
  3. Generate series datasets with random actions "aceeleration and centre fraction" reconstructed images to obtain latent representation "z" required to train RNN
 
