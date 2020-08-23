@@ -1,4 +1,4 @@
-### World Model implementation for fastMRI datasets towards autonoumus imaging (selecting acceleration factors)
+### World Model implementation for fastMRI datasets: towards autonoumus imaging (selecting acceleration factors)
 
 ###  Generative model
  1. Train VAE with random actions (select acceleration factor and centre fraction), save model as json format (to load multiple times) 
