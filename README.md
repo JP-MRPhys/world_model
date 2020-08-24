@@ -26,7 +26,7 @@ Inference using controller to generate new actions (see the Jupyter notebook)
 
 ![alt text](https://github.com/JP-MRPhys/world_model/blob/master/models/trained_models/CVAE/images_1/_rollout_12a_8.0_.png)
 
-e.g. VAE versus traditional recons at 8X acceleration
+e.g. VAE versus traditional recons at 8X acceleration acceleration factors obtained via controller
 
 ###### Datasets: Knee MRI:FastMRI https://fastmri.org/ with a custom enviroment, to provide rewards are MSE between gold standard and reconstructed images
 
