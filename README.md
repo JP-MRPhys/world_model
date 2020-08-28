@@ -28,6 +28,8 @@ Inference using controller to generate new actions (see the Jupyter notebook)
 
 e.g. VAE versus traditional recons at 8X acceleration acceleration factors obtained via controller
 
+See blog post for further details: https://medium.com/@jehillparikh/towards-autonomous-mr-imaging-using-world-models-accacce00b5a
+
 ###### Datasets: Knee MRI:FastMRI https://fastmri.org/ with a custom enviroment, to provide rewards are MSE between gold standard and reconstructed images
 
 ###### References: https://github.com/hardmaru/WorldModelsExperiments
