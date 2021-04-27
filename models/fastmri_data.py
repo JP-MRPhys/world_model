@@ -98,6 +98,43 @@ def get_training_pair_images_vae(file, centre_fraction, acceleration, image_size
     return  recon_image_final, np.expand_dims(volume_image, 3)
 
 
+
+def get_test_images_vae(file, centre_fraction, acceleration, image_size=256):
+    """
+    :param file: The training image
+    :param centre_fraction: randomly generated centre fraction
+    :param acceleration: randomly generated
+    :return: true gold standard and the fft of the masked k-space image
+
+    """
+    hf = h5py.File(file, 'r')
+    volume_kspace = hf['kspace'][()]
+    #volume_image = hf['reconstruction_esc'][()]
+    mask_func = MaskFunc(center_fractions=[centre_fraction],
+                         accelerations=[acceleration])  # Create the mask function object
+
+    volume_kspace_tensor = T.to_tensor(volume_kspace)
+    masked_kspace, mask = T.apply_mask(volume_kspace_tensor, mask_func)
+    ##masked_kspace_np=masked_kspace.numpy().reshape(masked_kspace.shape)
+
+    #volume_image = T.center_crop(volume_image, shape=[image_size, image_size])
+
+    recon_image = T.ifft2(masked_kspace)  # complex image
+    recon_image = T.complex_center_crop(recon_image, shape=[image_size, image_size])
+
+    #volume_image, mean, std = T.normalize_instance(volume_image)
+    # recon_image=T.normalize_instance(recon_image)
+
+    recon_image_abs = T.complex_abs(recon_image)  # compute absolute value to get a real image
+    # recon_image_rss= T.root_sum_of_square(recon_image_abs,dim=0) # compute absolute rss
+
+    recon_image_abs, mean, std = T.normalize_instance(recon_image_abs)
+
+    recon_image_final=np.expand_dims(recon_image_abs.numpy(), 3)
+
+    return  recon_image_final #, np.expand_dims(volume_image, 3)
+
+
 def get_random_accelerations(high):
     """
        : we apply these to fully sampled k-space to obtain q

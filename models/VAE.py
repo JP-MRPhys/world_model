@@ -15,7 +15,7 @@ import math
 import logging
 import shutil
 
-LOG_FILENAME="./logs/VAE_TRAINING.LOG"
+LOG_FILENAME="./log/VAE_TRAINING.LOG"
 logging.basicConfig(filename=LOG_FILENAME, level=logging.DEBUG)
 
 MAX_ROLLOUTS=5000
@@ -218,6 +218,15 @@ class CVAE(tf.keras.Model):
             #print(z)
             return z, mean, logvar
 
+    def reconstruct_z(self, z_samples):
+
+        if not self.sess._closed:
+            #print("***************SESSION is active **************************")
+            recon_image = self.sess.run(self.reconstructed, feed_dict={self.z: z_samples})
+
+            #print(z)
+            return recon_image
+
     def train(self):
 
         for d in self.gpu_list:
@@ -329,6 +338,9 @@ class CVAE(tf.keras.Model):
                 sampled_image = self.sess.run(self.reconstructed, feed_dict={self.z: z_samples})
 
                 return sampled_image
+
+
+
 
     def save_model(self, dir, name):
 
